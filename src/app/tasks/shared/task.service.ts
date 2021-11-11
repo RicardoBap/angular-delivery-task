@@ -15,8 +15,16 @@ const TASKS: Array<Task> = [
 @Injectable()
 export class TaskService {
 
-  getTasks(): Array<Task> {
-    return TASKS
-  }
+  getTasks(): Promise<any|Task[]> {
+    let promise = new Promise((resolve, reject) => {
+      if(TASKS.length > 0) {
+        resolve(TASKS);
+      } else {
+        let error_msg = 'Não HPA TAREFAS'
+        reject(error_msg)
+      }     
+    })
+    return promise
+  }  
 
 }
