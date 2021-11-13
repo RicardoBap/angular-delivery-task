@@ -1,12 +1,38 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+
+import { of, Subject } from "rxjs";
+import { switchMap } from "rxjs/operators";
+
+import { Task } from "src/app/tasks/shared/task.model";
 import { TaskService } from "src/app/tasks/shared/task.service";
 
 @Component({
   selector: 'task-search',
   templateUrl: './task-search.component.html'
 })
-export class TaskSearchComponent {
+export class TaskSearchComponent implements OnInit {
+  searchTerms: Subject<string> = new Subject()
+  tasks: Array<Task> = []
 
-  constructor(private taskService: TaskService) {}
+  constructor(
+    private taskService: TaskService,
+    private router: Router) {}
+
+  ngOnInit() {
+    this.searchTerms
+      .pipe(
+        switchMap(term => term ? this.taskService.searchByTitle(term) : of<Task[]>([]) )
+      ).subscribe(tasks => this.tasks = tasks)
+  }
+
+  search(term: string) {
+    this.searchTerms.next(term)
+  }
+
+  goToTask(task: Task) {
+    this.tasks = []
+    this.router.navigate(['/task', task.id])
+  }
 
 }

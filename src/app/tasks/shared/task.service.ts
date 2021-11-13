@@ -60,13 +60,21 @@ export class TaskService {
   }
 
   delete(id: number): Observable<null> {
-    let url = `${this.tasksURL}/${id}`
 
-    return this.http.delete<null>(url, { headers: this.headers })
+    return this.http.delete<null>(`${this.tasksURL}/${id}`, { headers: this.headers })
       .pipe(
         map(() => null),
         catchError(this.handleErrors)
       )
+  }
+
+  searchByTitle(term: string): Observable<Task[]> {
+  
+    return this.http.get<any>(`${this.tasksURL}?title=${term}`, { headers: this.headers })
+    .pipe(
+      map((response) => response),
+      catchError(this.handleErrors)
+    )
   }
 
   private handleErrors(error: HttpErrorResponse){
