@@ -4,9 +4,8 @@
       #searchInput (keyup)="search(searchInput.value)">
   </div>
 
-  <div class="list-group" style="position: absolute; width: 100%; left: 0; top: 35px; z-index: 1000;"
-    *ngIf="tasks">
-    <a class="list-group-item" (click)=goToTask(task) *ngFor="let task of tasks" style="cursor: pointer;">
+  <div class="list-group search" *ngIf="tasks">
+    <a class="list-group-item cursor" (click)=goToTask(task) *ngFor="let task of tasks">
       {{ task.title }}
     </a>
   </div>

@@ -9,7 +9,11 @@ import { TaskService } from "src/app/tasks/shared/task.service";
 
 @Component({
   selector: 'task-search',
-  templateUrl: './task-search.component.html'
+  templateUrl: 'task-search.component.html',
+  styles: [`
+    .search { position: absolute; width: 100%; left: 0; top: 35px; z-index: 1000; }
+    .cursor { cursor: pointer; }`
+  ]
 })
 export class TaskSearchComponent implements OnInit {
   searchTerms: Subject<string> = new Subject()
