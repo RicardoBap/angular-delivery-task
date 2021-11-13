@@ -39,6 +39,16 @@ export class TaskService {
       )
   }
 
+  createTask(task: Task): Observable<Task> {
+    let body = task 
+
+    return this.http.post<Task>(this.tasksURL, body, { headers: this.headers })   
+      .pipe(
+        map((response) => response),
+        catchError(this.handleErrors)
+      )
+  }
+
   updateTask(task: Task): Observable<Task> {
     let body = task
 
