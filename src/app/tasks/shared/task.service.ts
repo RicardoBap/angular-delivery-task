@@ -23,7 +23,7 @@ export class TaskService {
   constructor(private http: HttpClient) {}
 
   getTasks(): Observable<any|Task[]> {
-    return this.http.get(this.tasksURL)
+    return this.http.get<Task[]>(this.tasksURL)
       .pipe(
         map((response) => response)
       )
@@ -33,10 +33,10 @@ export class TaskService {
     return Promise.resolve(TASKS.slice(0, 3))
   }
 
-  getTask(id: number): Promise<Task> {
-    return this.getTasks()
-      .then(tasks => 
-        tasks.find((task: { id: number; }) => task.id === id)
+  getTask(id: number): Observable<Task> {
+    return this.http.get<Task>(`${this.tasksURL}/${id}`)
+      .pipe(
+        map((response) => response)
       )
   }
 
