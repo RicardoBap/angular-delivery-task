@@ -15,9 +15,9 @@ export class DasboardComponent implements OnInit {
 
   ngOnInit() {
     this.taskService.getImportantTasks()
-      .then((tasks) => 
-        this.tasks = tasks
-      )
+      .subscribe({
+        next: (tasks) => this.tasks = tasks
+      })
   }
 
 }
