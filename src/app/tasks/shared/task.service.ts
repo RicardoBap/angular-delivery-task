@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 import { Observable, throwError } from "rxjs";
@@ -9,6 +9,9 @@ import { Task } from "./task.model";
 @Injectable()
 export class TaskService {
   tasksURL = "api/tasks"
+  headers = new HttpHeaders()
+      .append('Content-Type', 'application/json')
+      .append('Accept', 'application/vnd.taskmanager.v1')
 
   constructor(private http: HttpClient) {}
 
@@ -32,6 +35,16 @@ export class TaskService {
     return this.http.get<Task>(`${this.tasksURL}/${id}`)
       .pipe(
         map((response) => response),
+        catchError(this.handleErrors)
+      )
+  }
+
+  updateTask(task: Task): Observable<Task> {
+    let body = task
+
+    return this.http.put<Task>(`${this.tasksURL}/${task.id}`,body, { headers: this.headers } )
+      .pipe(        
+        map(() => task),
         catchError(this.handleErrors)
       )
   }
