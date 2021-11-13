@@ -31,11 +31,21 @@ export class TasksComponent implements OnInit {
     if(!this.newTask.title) {
       alert("A tarefa deve ter um título")
     } else {
-      this.taskService.createTask(this.newTask)
+      this.taskService.create(this.newTask)
         .subscribe({
           next: (task) => { this.tasks.push(task),
             this.newTask = new Task(NaN, '')
         },
+          error: () => { alert("Ocorreu um erro no servidor, tente mais tarde") }
+        })
+    }
+  }
+
+  deleteTask(task: Task) {
+    if( confirm(`Deseja realmente excluir a tarefa "${task.title}`) ) {
+      this.taskService.delete(task.id)
+        .subscribe({
+          next: () => { this.tasks = this.tasks.filter(t => t != task) },
           error: () => { alert("Ocorreu um erro no servidor, tente mais tarde") }
         })
     }

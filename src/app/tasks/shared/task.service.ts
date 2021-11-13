@@ -39,7 +39,7 @@ export class TaskService {
       )
   }
 
-  createTask(task: Task): Observable<Task> {
+  create(task: Task): Observable<Task> {
     let body = task 
 
     return this.http.post<Task>(this.tasksURL, body, { headers: this.headers })   
@@ -55,6 +55,16 @@ export class TaskService {
     return this.http.put<Task>(`${this.tasksURL}/${task.id}`,body, { headers: this.headers } )
       .pipe(        
         map(() => task),
+        catchError(this.handleErrors)
+      )
+  }
+
+  delete(id: number): Observable<null> {
+    let url = `${this.tasksURL}/${id}`
+
+    return this.http.delete<null>(url, { headers: this.headers })
+      .pipe(
+        map(() => null),
         catchError(this.handleErrors)
       )
   }
