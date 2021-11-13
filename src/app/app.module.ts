@@ -11,6 +11,8 @@ import { DasboardComponent } from './dashboard/dashboard.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 
+import { TaskService } from './tasks/shared/task.service';
+
 const ROUTES = RouterModule.forRoot([
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DasboardComponent},
@@ -32,7 +34,7 @@ const ROUTES = RouterModule.forRoot([
     RouterModule,
     ROUTES
   ],
-  providers: [],
+  providers: [{ provide: TaskService, useClass: TaskService }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

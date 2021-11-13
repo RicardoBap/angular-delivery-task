@@ -6,10 +6,7 @@ import { TaskService } from "./shared/task.service";
 @Component({
   selector: 'tasks',
   templateUrl: './tasks.component.html',
-  styles: [ `.btn-info { margin-right: 5px; }` ],
-  providers: [
-    { provide: TaskService, useClass: TaskService }
-  ]
+  styles: [ `.btn-info { margin-right: 5px; }` ]
 })
 
 export class TasksComponent implements OnInit {
