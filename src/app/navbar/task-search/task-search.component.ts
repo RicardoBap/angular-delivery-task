@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 
 import { of, Subject } from "rxjs";
-import { switchMap } from "rxjs/operators";
+import { debounceTime, distinctUntilChanged, switchMap } from "rxjs/operators";
 
 import { Task } from "src/app/tasks/shared/task.model";
 import { TaskService } from "src/app/tasks/shared/task.service";
@@ -22,6 +22,8 @@ export class TaskSearchComponent implements OnInit {
   ngOnInit() {
     this.searchTerms
       .pipe(
+        debounceTime(500),
+        distinctUntilChanged(),
         switchMap(term => term ? this.taskService.searchByTitle(term) : of<Task[]>([]) )
       ).subscribe(tasks => this.tasks = tasks)
   }
