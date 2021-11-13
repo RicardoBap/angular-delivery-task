@@ -18,7 +18,7 @@ export class TasksComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.taskService.getTasks()
+    this.taskService.getAll()
       .subscribe({
         next: (tasks) => { this.tasks = tasks },
         error: (_erro) => { alert("Ocorreu um erro no servidor, tente mais tarde") }

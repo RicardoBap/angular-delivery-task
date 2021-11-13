@@ -15,7 +15,7 @@ export class TaskService {
 
   constructor(private http: HttpClient) {}
 
-  getTasks(): Observable<any|Task[]> {
+  getAll(): Observable<any|Task[]> {
     return this.http.get<Task[]>(this.tasksURL)
       .pipe(
         map((response) => response),
@@ -23,15 +23,15 @@ export class TaskService {
       )
   }
   
-  getImportantTasks(): Observable<Task[]> {
-    return this.getTasks()
+  getImportant(): Observable<Task[]> {
+    return this.getAll()
       .pipe(
         map((tasks) =>  tasks.slice(0, 3) ),
         catchError(this.handleErrors)
       )
   }
 
-  getTask(id: number): Observable<Task> {
+  getById(id: number): Observable<Task> {
     return this.http.get<Task>(`${this.tasksURL}/${id}`)
       .pipe(
         map((response) => response),
@@ -49,7 +49,7 @@ export class TaskService {
       )
   }
 
-  updateTask(task: Task): Observable<Task> {
+  update(task: Task): Observable<Task> {
     let body = task
 
     return this.http.put<Task>(`${this.tasksURL}/${task.id}`,body, { headers: this.headers } )
