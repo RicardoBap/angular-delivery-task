@@ -17,12 +17,10 @@ export class TasksComponent implements OnInit {
 
   ngOnInit() {
     this.taskService.getTasks()
-      .then((tasks) => {
-        this.tasks = tasks
-      })
-      .catch((error_msg) => {
-        alert(error_msg)
-      })
+      .subscribe({
+        next: (tasks) => { this.tasks = tasks },
+        error: (_erro) => { alert("Ocorreu um erro no servidor, tente mais tarde") }
+    })
   }
 
   onSelect(task: Task): void {
