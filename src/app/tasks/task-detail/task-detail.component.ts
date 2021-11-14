@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
 import { Location } from "@angular/common";
 
+import { FormControl, FormGroup } from "@angular/forms";
+
 import { switchMap } from 'rxjs/operators';
 
 import { Task } from "../shared/task.model";
@@ -14,12 +16,20 @@ import { TaskService } from "../shared/task.service";
 })
 export class TaskDetailComponent implements  OnInit {
   task: Task
+  reactiveTaskForm: FormGroup
 
   constructor(
     private taskService: TaskService,
     private route: ActivatedRoute,
     private location: Location
-  ) {}
+  ) {
+    this.reactiveTaskForm = new FormGroup({
+      title: new FormControl(null),
+      deadline: new FormControl(null),
+      done: new FormControl(null),
+      description: new FormControl(null)
+    })
+  }
 
   ngOnInit(): void {
     this.route.params
