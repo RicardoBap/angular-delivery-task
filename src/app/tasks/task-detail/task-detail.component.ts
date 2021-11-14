@@ -32,6 +32,11 @@ export class TaskDetailComponent implements  OnInit {
       })
   }
 
+  taskDoneOptions: Array<any> = [
+    { value: false, text: "Pendente" },
+    { value: true, text: "Feita" }
+  ]
+
   goBack() {
     this.location.back()
   }
