@@ -13,6 +13,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DasboardComponent } from './dashboard/dashboard.component';
+import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 import { TaskSearchComponent } from './navbar/task-search/task-search.component';
@@ -26,6 +27,7 @@ import { InMemoryTaskDataService } from './in-memory-task.dara.service';
     AppComponent,
     DasboardComponent,
     NavbarComponent,
+    SignUpFormComponent,
     TasksComponent,
     TaskDetailComponent,
     TaskSearchComponent

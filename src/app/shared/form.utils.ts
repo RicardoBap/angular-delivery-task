@@ -3,7 +3,6 @@ import { FormGroup } from "@angular/forms";
 export class FormUtils {
 
   constructor(private form: FormGroup) {}
-
   
   fieldClassErrorOrSuccess(fieldName: string) {
     return {

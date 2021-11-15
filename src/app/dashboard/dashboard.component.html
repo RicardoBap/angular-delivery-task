@@ -11,7 +11,7 @@
     <tr *ngFor="let task of tasks">
       <td>{{ task.title }}</td>
       <td>
-        <a class="btn btn-info" [routerLink]="['/task', task.id]">Detalhes</a>
+        <a class="btn btn-info" [routerLink]="['/tasks', task.id]">Detalhes</a>
       </td>
     </tr>
   </tbody>
