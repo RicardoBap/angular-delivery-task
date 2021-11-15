@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 
 // IMPORT MODULES
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'
+//import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'
 
 // IMPORT COMPONENTS
 import { AppComponent } from './app.component';
@@ -22,7 +22,7 @@ import { TaskSearchComponent } from './navbar/task-search/task-search.component'
 // IMPORTS SERVICES
 import { AuthService } from './shared/auth.service';
 import { TaskService } from './tasks/shared/task.service';
-import { InMemoryTaskDataService } from './in-memory-task.dara.service';
+//import { InMemoryTaskDataService } from './in-memory-task.dara.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,7 @@ import { InMemoryTaskDataService } from './in-memory-task.dara.service';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryTaskDataService),
+    //HttpClientInMemoryWebApiModule.forRoot(InMemoryTaskDataService),
     ReactiveFormsModule,
     RouterModule
   ],
