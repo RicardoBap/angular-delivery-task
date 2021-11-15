@@ -12,7 +12,7 @@ import { TaskService } from "../shared/task.service";
 @Component({
   selector: 'task-detail',
   templateUrl: './task-detail.component.html',
-  styles: [ `.btn-default { margin-right: 5px; }`]
+  styles: [ `.btn-default { margin-left: 5px; }`]
 })
 export class TaskDetailComponent implements  OnInit {
   task: Task
@@ -37,9 +37,32 @@ export class TaskDetailComponent implements  OnInit {
         switchMap((params: Params) => this.taskService.getById(+params['id']))  
       )
       .subscribe({
-        next: (task) => { this.task = task },
+        next: (task) => { this.setTask(task) },
         error: (_erro) => { alert("Ocorreu um erro no servidor, tente mais tarde") }
       })
+  }
+
+  setTask(task: Task): void {
+    this.task = task
+
+    //setValue
+    // let formModel = {
+    //   title: task.title || null,
+    //   description: task.description || null,
+    //   done: task.done || null,
+    //   deadline: task.deadline || null
+    // }
+    // this.reactiveTaskForm.setValue(formModel)
+
+    //patchValue
+    // let formModel = {
+    //   title: task.title || null,
+    //   description: task.description || null,
+    //   done: task.done || null,
+    //   deadline: task.deadline || null
+    // }
+    this.reactiveTaskForm.patchValue(task)
+
   }
 
   taskDoneOptions: Array<any> = [
