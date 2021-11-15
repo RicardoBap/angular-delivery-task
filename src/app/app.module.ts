@@ -20,6 +20,7 @@ import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 import { TaskSearchComponent } from './navbar/task-search/task-search.component';
 
 // IMPORTS SERVICES
+import { AuthService } from './shared/auth.service';
 import { TaskService } from './tasks/shared/task.service';
 import { InMemoryTaskDataService } from './in-memory-task.dara.service';
 
@@ -43,7 +44,10 @@ import { InMemoryTaskDataService } from './in-memory-task.dara.service';
     ReactiveFormsModule,
     RouterModule
   ],
-  providers: [{ provide: TaskService, useClass: TaskService }],
+  providers: [
+    AuthService,
+    { provide: TaskService, useClass: TaskService }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
