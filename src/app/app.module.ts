@@ -25,6 +25,9 @@ import { TaskService } from './tasks/shared/task.service';
 import { StorageService } from './shared/storage/storage.service';
 //import { InMemoryTaskDataService } from './in-memory-task.dara.service';
 
+// IMPORTS GUARDS
+import { AuthGuard } from './guards/auth.guard';
+
 // IMPORTS INTERCEPTORS
 import { AuthInterceptorProvider } from './interceptors/auth-interceptor';
 
@@ -49,6 +52,7 @@ import { AuthInterceptorProvider } from './interceptors/auth-interceptor';
     RouterModule
   ],
   providers: [
+    AuthGuard,
     AuthInterceptorProvider,
     AuthService,
     { provide: TaskService, useClass: TaskService },

@@ -53,6 +53,8 @@ export class AuthService {
 
   signOut() {}
 
-  userSignedIn() {}
+  userSignedIn() {
+    return this.storage.getLocalUser()
+  }
 
 }
