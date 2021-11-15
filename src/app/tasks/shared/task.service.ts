@@ -8,10 +8,10 @@ import { Task } from "./task.model";
 
 @Injectable()
 export class TaskService {
-  tasksURL = "api/tasks" //http://localhost:3000/tasks
+  tasksURL = "http://localhost:3000/tasks" // api/tasks"
   headers = new HttpHeaders()
       .append('Content-Type', 'application/json')
-      .append('Accept', 'application/vnd.taskmanager.v1')
+      .append('Accept', 'application/rbk.taskmanager.v1')
 
   constructor(private http: HttpClient) {}
 
