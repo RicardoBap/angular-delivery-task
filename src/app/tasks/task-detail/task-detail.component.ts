@@ -1,22 +1,29 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
-import { Location } from "@angular/common";
-
-import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import { Location } from '@angular/common';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 import { switchMap } from 'rxjs/operators';
 
 import { Task } from "../shared/task.model";
 import { TaskService } from "../shared/task.service";
+import { FormUtils } from "src/app/shared/form.utils";
 
 @Component({
   selector: 'task-detail',
   templateUrl: './task-detail.component.html',
-  styles: [ `.btn-default { margin-left: 5px; }`]
+  providers: [ Location ],
+  styles: [`
+    .form-control-feedback { margin-right: 20px; } 
+    .btn-update { margin-right: 5px; }`
+  ]
 })
-export class TaskDetailComponent implements  OnInit {
-  task: Task
+
+export class TaskDetailComponent implements OnInit {
   reactiveTaskForm: FormGroup
+  task: Task
+  taskDoneOptions: Array<any>
+  formUtils: FormUtils
 
   constructor(
     private taskService: TaskService,
@@ -24,67 +31,52 @@ export class TaskDetailComponent implements  OnInit {
     private location: Location,
     private formBuilder: FormBuilder
   ) {
+    this.taskDoneOptions = [
+      { value: false, text: "Pendente" },
+      { value: true, text: "Feita" }
+    ]
+
     this.reactiveTaskForm = this.formBuilder.group({
-      title: [null],
-      deadline: [null],
-      done: [null],
-      description: [null]
+      title: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(255)]],
+      deadline: [null, Validators.required],
+      done: [null, Validators.required],
+      description: [null],
     })
+
+    this.formUtils = new FormUtils(this.reactiveTaskForm)
   }
 
   ngOnInit(): void {
     this.route.params
       .pipe(
-        switchMap((params: Params) => this.taskService.getById(+params['id']))  
+        switchMap((params: Params) => this.taskService.getById(+params['id']))    
       )
       .subscribe({
-        next: (task) => { this.setTask(task) },
+        next: (task) => { this.setTask(task)},
         error: (_erro) => { alert("Ocorreu um erro no servidor, tente mais tarde") }
-      })
+      })    
   }
 
   setTask(task: Task): void {
-    this.task = task
-
-    //setValue
-    // let formModel = {
-    //   title: task.title || null,
-    //   description: task.description || null,
-    //   done: task.done || null,
-    //   deadline: task.deadline || null
-    // }
-    // this.reactiveTaskForm.setValue(formModel)
-
-    //patchValue
-    // let formModel = {
-    //   title: task.title || null,
-    //   description: task.description || null,
-    //   done: task.done || null,
-    //   deadline: task.deadline || null
-    // }
+    this.task = task       
     this.reactiveTaskForm.patchValue(task)
-
   }
-
-  taskDoneOptions: Array<any> = [
-    { value: false, text: "Pendente" },
-    { value: true, text: "Feita" }
-  ]
 
   goBack() {
     this.location.back()
   }
 
   updateTask() {
-    if(!this.task.title) {
-      alert("A tarefa deve ter um título")
-    } else {
-      this.taskService.update(this.task)
-        .subscribe({
-          next: () => { alert("Tarefa atualizada com sucesso!") },
-          error: () => { alert("Ocorreu um erro no servidor, tente mais tarde") }
-        })
-    }
+    this.task.title = this.reactiveTaskForm.get('title')?.value
+    this.task.deadline = this.reactiveTaskForm.get('deadline')?.value
+    this.task.done = this.reactiveTaskForm.get('done')?.value
+    this.task.description = this.reactiveTaskForm.get('description')?.value
+
+    this.taskService.update(this.task)      
+      .subscribe({       
+        next: () => { alert('Tarefa atualizada com sucesso!') },
+        error: () => { alert("Ocorreu um erro no servidor, tente mais tarde") }
+      })
   }
 
 }
