@@ -4,6 +4,8 @@ import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
 import { catchError, map } from "rxjs/operators";
 
+import { StorageService } from "src/app/shared/storage/storage.service";
+
 import { Task } from "./task.model";
 
 @Injectable()
@@ -13,17 +15,19 @@ export class TaskService {
       .append('Content-Type', 'application/json')
       .append('Accept', 'application/rbk.taskmanager.v1')
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private storage: StorageService) {}
 
   getAll(): Observable<any|Task[]> {
-    return this.http.get<Task[]>(this.tasksURL)
+    return this.http.get<any>(this.tasksURL, { headers: this.headers })
       .pipe(
-        map((response) => response),
+        map((response) => response.tasks),
         catchError(this.handleErrors)       
       )
   }
   
-  getImportant(): Observable<Task[]> {
+  getImportant(): Observable<any|Task[]> {
     return this.getAll()
       .pipe(
         map((tasks) =>  tasks.slice(0, 3) ),

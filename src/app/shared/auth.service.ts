@@ -1,5 +1,9 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+
+import { StorageService } from "./storage/storage.service";
+
+import { LocalUser } from "./storage/local_user";
 import { User } from "./user.model";
 
 @Injectable()
@@ -9,9 +13,9 @@ export class AuthService {
       .append('Content-Type', 'application/json')
       .append('Accept', 'application/rbk.taskmanager.v1')
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private storage: StorageService) {}
 
-  signIn(loginForm: User): Promise<void> {
+  signIn(loginForm: any): Promise<void> {
     let session = {
       email: loginForm.email,
       password: loginForm.password
@@ -21,12 +25,11 @@ export class AuthService {
 
     console.log("=>", body) 
 
-    return this.http.post<User>(this.sessionsURL, body, { headers: this.headers } )
+    return this.http.post<any>(this.sessionsURL, body, { headers: this.headers } )
       .toPromise()
       .then(response => {
-        console.log("*", response)
-        //this.armazenarToken(response.auth_token)
-        //this.successfulLogin(response.auth_token)       
+        console.log("*", response.auth_token)
+        this.successfulLogin(response.auth_token)       
       })
       .catch(response => {
         console.log("ERRO",response)
@@ -38,6 +41,13 @@ export class AuthService {
       return Promise.reject(response)
     })    
   } 
+
+  successfulLogin(token: string) {
+    let user:  LocalUser = {
+      token: token
+    }
+    this.storage.setLocalUser(user)
+  }
 
   signUp() {}
 

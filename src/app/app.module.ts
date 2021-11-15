@@ -22,7 +22,11 @@ import { TaskSearchComponent } from './navbar/task-search/task-search.component'
 // IMPORTS SERVICES
 import { AuthService } from './shared/auth.service';
 import { TaskService } from './tasks/shared/task.service';
+import { StorageService } from './shared/storage/storage.service';
 //import { InMemoryTaskDataService } from './in-memory-task.dara.service';
+
+// IMPORTS INTERCEPTORS
+import { AuthInterceptorProvider } from './interceptors/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -45,8 +49,10 @@ import { TaskService } from './tasks/shared/task.service';
     RouterModule
   ],
   providers: [
+    AuthInterceptorProvider,
     AuthService,
-    { provide: TaskService, useClass: TaskService }
+    { provide: TaskService, useClass: TaskService },
+    StorageService
   ],
   bootstrap: [AppComponent]
 })

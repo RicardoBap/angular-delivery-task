@@ -3,6 +3,7 @@ export class User {
   password: string
   passwordConfirmation: string
   id?: Number
+  auth_token: string
 
   constructor(email: string, password: string, passwordConfirmation: string, id?: Number) {
     this.email = email

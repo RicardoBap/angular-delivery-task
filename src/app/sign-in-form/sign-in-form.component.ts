@@ -29,7 +29,7 @@ export class SignInFormComponent {
 
     this.authService.signIn(this.loginForm.value)
       .then(() => {
-        this.router.navigate(['/dashboard'])
+        this.router.navigate(['/tasks'])
       })
       .catch(erro => {
         console.log("++++++++ ERRO +++++++++", erro)
