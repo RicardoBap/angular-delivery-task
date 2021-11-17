@@ -34,16 +34,16 @@
     </div>
 
     <!-- confirmacao de senha-->
-    <div class="form-group  has-feedback" [ngClass]="formUtils.fieldClassErrorOrSuccess('passwordConfirmation')" >
-      <label for="passwordConfirmation" class="col-sm-4 control-label">Confirmação de senha</label>
+    <div class="form-group  has-feedback" [ngClass]="formUtils.fieldClassErrorOrSuccess('password_confirmation')" >
+      <label for="password_confirmation" class="col-sm-4 control-label">Confirmação de senha</label>
       <div class="col-sm-4">
-        <input type="password" class="form-control" id="passwordConfirmation" formControlName="passwordConfirmation" >
+        <input type="password" class="form-control" id="password_confirmation" formControlName="password_confirmation" >
         <span class="glyphicon  form-control-feedback"  
-          [ngClass]="formUtils.iconClassErrorOrSuccess('passwordConfirmation')" >
+          [ngClass]="formUtils.iconClassErrorOrSuccess('password_confirmation')" >
         </span>
-        <div *ngIf="formUtils.showFieldError(formUtils.msg.passwordConfirmation)" class="text-danger">
-          <div *ngIf="formUtils.msg.passwordConfirmation.errors?.required">A confirmação de senha é obrigatório</div>
-          <div *ngIf="formUtils.msg.passwordConfirmation.errors?.mismatch">A senha e a confirmação não combinam</div>         
+        <div *ngIf="formUtils.showFieldError(formUtils.msg.password_confirmation)" class="text-danger">
+          <div *ngIf="formUtils.msg.password_confirmation.errors?.required">A confirmação de senha é obrigatório</div>
+          <div *ngIf="formUtils.msg.password_confirmation.errors?.mismatch">A senha e a confirmação não combinam</div>         
         </div>
       </div>
     </div>

@@ -56,7 +56,7 @@ export class TaskService {
   update(task: Task): Observable<Task> {
     let body = task
 
-    return this.http.put<Task>(`${this.tasksURL}/${task.id}`,body, { headers: this.headers } )
+    return this.http.put<Task>(`${this.tasksURL}/${task.id}`, body, { headers: this.headers } )
       .pipe(        
         map(() => task),
         catchError(this.handleErrors)
