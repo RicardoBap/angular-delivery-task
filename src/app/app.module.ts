@@ -27,6 +27,7 @@ import { StorageService } from './shared/storage/storage.service';
 
 // IMPORTS GUARDS
 import { AuthGuard } from './guards/auth.guard';
+import { NotAuthenticatedGuard } from './guards/not-authenticated.guard';
 
 // IMPORTS INTERCEPTORS
 import { AuthInterceptorProvider } from './interceptors/auth-interceptor';
@@ -66,6 +67,7 @@ import { ToastNoAnimationModule } from 'ngx-toastr';
     AuthService,
     { provide: TaskService, useClass: TaskService },
     ErrorInterceptorProvider,
+    NotAuthenticatedGuard,
     StorageService
   ],
   bootstrap: [AppComponent]
