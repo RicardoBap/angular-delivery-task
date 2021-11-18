@@ -29,7 +29,8 @@ export class TaskSearchComponent implements OnInit {
         debounceTime(500),
         distinctUntilChanged(),
         switchMap(term => term ? this.taskService.searchByTitle(term) : of<Task[]>([]) )
-      ).subscribe(tasks => this.tasks = tasks)
+      )
+      .subscribe((tasks) => { this.tasks = tasks })
   }
 
   search(term: string) {
@@ -38,7 +39,7 @@ export class TaskSearchComponent implements OnInit {
 
   goToTask(task: Task) {
     this.tasks = []
-    this.router.navigate(['/task', task.id])
+    this.router.navigate(['/tasks', task.id])
   }
 
 }

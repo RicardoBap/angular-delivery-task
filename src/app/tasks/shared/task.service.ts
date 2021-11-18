@@ -76,9 +76,9 @@ export class TaskService {
   
     return this.http.get<any>(`${this.tasksURL}?title=${term}`, { headers: this.headers })
     .pipe(
-      map((response) => response),
+      map((response) => response.tasks),
       catchError(this.handleErrors)
-    )
+    )    
   }
 
   private handleErrors(error: HttpErrorResponse){
