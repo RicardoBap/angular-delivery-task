@@ -34,7 +34,7 @@
 
     <div class="form-group">
       <div class="col-sm-offset-4 col-sm-8">
-        <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary">Entrar</button>
+        <button [disabled]="loginForm.invalid || submitted" type="submit" class="btn btn-primary">Entrar</button>
       </div>
     </div>
   </form>

@@ -19,23 +19,17 @@ export class AuthService {
   constructor(private http: HttpClient, private storage: StorageService) {}
 
   signIn(loginForm: any): Promise<void> {
-    let session = {
+    let body = {
       email: loginForm.email,
       password: loginForm.password
     }
 
-    const body = session
-
-    console.log("=>", body) 
-
     return this.http.post<User>(this.sessionsURL, body, { headers: this.headers } )
       .toPromise()
       .then(response => {
-        console.log("*", response.auth_token)
         this.successfulLogin(response.auth_token)       
       })
       .catch(response => {
-        console.log("ERRO",response)
         if (response.status === 401 ) {
           if (response.error.errors === 'Invalid password or email') {
           return Promise.reject('Usuario ou senha inválidos')

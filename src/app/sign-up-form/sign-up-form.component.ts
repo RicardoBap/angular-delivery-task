@@ -41,8 +41,6 @@ export class SignUpFormComponent {
           
           if(error.status === 422) {
             this.toastService.error(error.error.errors.email, error.status)
-          } else {
-            //this.toastService.error('Hello world', error.status)
           }
         }
       })
