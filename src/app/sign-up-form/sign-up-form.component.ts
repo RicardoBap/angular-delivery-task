@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 
 import { AuthService } from "../shared/auth.service";
 
@@ -13,36 +14,39 @@ import { FormUtils } from "../shared/form.utils";
 export class SignUpFormComponent {
   userForm: FormGroup
   formUtils: FormUtils
+  submitted: boolean
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authService: AuthService) {
+    private authService: AuthService,
+    private toastService: ToastrService) {
 
       this.setupForm()
       this.formUtils = new FormUtils(this.userForm)
+      this.submitted = false
   }
 
   signUpUser() {
-    console.log("Formulario de signUp enviado")
-    console.log("===>", this.userForm.value)
-
+    this.submitted = true
     this.authService.signUp(this.userForm.value)
-      .then(() => {
-        this.router.navigate(['/dashboard'])
-      })
-      .catch(erro => {
-        console.log("++++++++ ERRO +++++++++", erro)
+      .subscribe({
+        next: (response) => { 
+          this.authService.successfulLogin(response.auth_token),
+          alert('Parabéns sua conta foi criada com sucesso!'),
+          this.router.navigate(['/dashboard']) 
+        },
+        error: (error) => {
+          this.submitted = false
+          
+          if(error.status === 422) {
+            this.toastService.error(error.error.errors.email, error.status)
+          } else {
+            //this.toastService.error('Hello world', error.status)
+          }
+        }
       })
   }
-
-  // **************************************************************
-    // this.authService.signUp(this.userForm.value)
-    //   .subscribe(
-    //     response => { alert('Parabéns sua conta foi criada com sucesso!')}
-    //     //this.router.navigate(['/dashboard'])
-    //   )
-    //************************************ */ 
 
   setupForm() {
     this.userForm = this.formBuilder.group({

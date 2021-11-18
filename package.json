@@ -10,7 +10,6 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~12.2.0",
     "@angular/common": "~12.2.0",
     "@angular/compiler": "~12.2.0",
     "@angular/core": "~12.2.0",
@@ -21,6 +20,7 @@
     "angular-in-memory-web-api": "^0.11.0",
     "bootstrap": "^3.4.1",
     "jquery": "^3.6.0",
+    "ngx-toastr": "^14.2.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

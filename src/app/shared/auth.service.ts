@@ -6,7 +6,7 @@ import { StorageService } from "./storage/storage.service";
 import { LocalUser } from "./storage/local_user";
 import { User } from "./user.model";
 import { Observable, throwError } from "rxjs";
-import { catchError, map } from "rxjs/operators";
+import { catchError, map, switchMap } from "rxjs/operators";
 
 @Injectable()
 export class AuthService {
@@ -52,41 +52,18 @@ export class AuthService {
     this.storage.setLocalUser(user)
   }
 
-  // signUp(user: any): Observable<any> {
-  //   let body = user
-  //   console.log('------------', body)
-
-  //   return this.http.post<any>(this.usersURL, body, { headers: this.headers } )
-  //     .pipe(        
-  //       map(() => user),
-  //       catchError(this.handleErrors)
-  //     )
-  // }
-
-  signUp(userForm: any): Promise<void> {
+  signUp(userForm: any): Observable<any> {
     const params = {
       "email": userForm.email,
       "password": userForm.password,
       "password_confirmation": userForm.password_confirmation 
-    }
-
-    console.log("=>", params, "<=") 
+    }    
 
     return this.http.post<any>(this.usersURL, { user: params }, { headers: this.headers } )
-      .toPromise()
-      .then(response => {
-        console.log("*SIG-UP*", response)
-        this.successfulLogin(response.auth_token)       
-      })
-      .catch(response => {
-        console.log("ERRO",response)
-        if (response.status === 401 ) {
-          if (response.error.errors === 'Invalid password or email') {
-          return Promise.reject('Usuario ou senha inválidos')
-        }
-      }
-      return Promise.reject(response)
-    })  
+      .pipe(
+        map((response) => response),
+        catchError(this.handleErrors)
+      )
   } 
 
   signOut() {}
@@ -97,7 +74,7 @@ export class AuthService {
 
   private handleErrors(error: HttpErrorResponse){
     console.log("SALVANDO O ERRO NO ARQUIVO DE LOG - DETALHES DO ERRO => ", error)
-    return throwError(console.log(error));
+    return throwError(error);
   }
 
 }

@@ -30,6 +30,10 @@ import { AuthGuard } from './guards/auth.guard';
 
 // IMPORTS INTERCEPTORS
 import { AuthInterceptorProvider } from './interceptors/auth-interceptor';
+import { ErrorInterceptorProvider } from './interceptors/error-interceptor';
+
+// IMPORT NGX-TOAST
+import { ToastNoAnimationModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -49,13 +53,19 @@ import { AuthInterceptorProvider } from './interceptors/auth-interceptor';
     HttpClientModule,
     //HttpClientInMemoryWebApiModule.forRoot(InMemoryTaskDataService),
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    ToastNoAnimationModule.forRoot(( { 
+      timeOut : 10000 , 
+      positionClass : 'toast-bottom-center' , 
+      preventDuplicates : true , 
+    } ) ),
   ],
   providers: [
     AuthGuard,
     AuthInterceptorProvider,
     AuthService,
     { provide: TaskService, useClass: TaskService },
+    ErrorInterceptorProvider,
     StorageService
   ],
   bootstrap: [AppComponent]
