@@ -66,9 +66,17 @@ export class AuthService {
       )
   } 
 
-  signOut() {}
+  signOut(): Observable<any> {
+    let tokenObj = this.storage.getLocalUser()
+    this.storage.setLocalUser(null)
+    return this.http.delete<any>(`${this.sessionsURL}/${tokenObj.token}`, { headers: this.headers } )
+      .pipe(
+        map((response) => response),
+        catchError(this.handleErrors)
+      )
+  }
 
-  userSignedIn() {
+  userSignedIn(): boolean { 
     return this.storage.getLocalUser()
   }
 
