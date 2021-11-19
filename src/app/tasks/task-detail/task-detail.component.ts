@@ -49,6 +49,7 @@ export class TaskDetailComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.task = new Task(NaN, '')
     this.route.params
       .pipe(
         switchMap((params: Params) => this.taskService.getById(+params['id']))    
@@ -59,8 +60,11 @@ export class TaskDetailComponent implements OnInit, AfterViewInit {
       })    
   }
 
-  ngAfterViewInit() {
-    $("#exemplo").fadeOut(9999)
+  public ngAfterViewInit() {
+    $("#deadline").datetimepicker({
+      'sideBySide': true,
+      'locale': 'pt-BR'
+    }).on('dp.change', () => this.reactiveTaskForm.patchValue( { deadline: $("#deadline").val() } )) 
   }
 
   setTask(task: Task): void {
