@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
 import { Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
@@ -8,6 +8,8 @@ import { switchMap } from 'rxjs/operators';
 import { Task } from "../shared/task.model";
 import { TaskService } from "../shared/task.service";
 import { FormUtils } from "src/app/shared/form.utils";
+
+declare var $: any;
 
 @Component({
   selector: 'task-detail',
@@ -19,7 +21,7 @@ import { FormUtils } from "src/app/shared/form.utils";
   ]
 })
 
-export class TaskDetailComponent implements OnInit {
+export class TaskDetailComponent implements OnInit, AfterViewInit {
   reactiveTaskForm: FormGroup
   task: Task
   taskDoneOptions: Array<any>
@@ -55,6 +57,10 @@ export class TaskDetailComponent implements OnInit {
         next: (task) => { this.setTask(task)},
         error: (_erro) => { alert("Ocorreu um erro no servidor, tente mais tarde") }
       })    
+  }
+
+  ngAfterViewInit() {
+    $("#exemplo").fadeOut(9999)
   }
 
   setTask(task: Task): void {
