@@ -11,6 +11,7 @@ import { Task } from "./task.model";
 @Injectable()
 export class TaskService {
   tasksURL = "http://localhost:3000/tasks" // api/tasks"
+  //tasksURL = "https://ruby-manager.herokuapp.com/tasks" 
   headers = new HttpHeaders()
       .append('Content-Type', 'application/json')
       .append('Accept', 'application/rbk.taskmanager.v1')

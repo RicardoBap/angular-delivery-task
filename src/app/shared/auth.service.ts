@@ -12,6 +12,9 @@ import { catchError, map, switchMap } from "rxjs/operators";
 export class AuthService {
   sessionsURL = "http://localhost:3000/sessions"
   usersURL = "http://localhost:3000/users"
+
+  //sessionsURL = "https://ruby-manager.herokuapp.com/sessions"
+  //usersURL = "https://ruby-manager.herokuapp.com/users"
   headers = new HttpHeaders()
       .append('Content-Type', 'application/json')
       .append('Accept', 'application/rbk.taskmanager.v1')
