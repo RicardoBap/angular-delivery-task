@@ -33,7 +33,10 @@ export class SignUpFormComponent {
       .subscribe({
         next: (response) => { 
           this.authService.successfulLogin(response.auth_token),
-          alert('Parabéns sua conta foi criada com sucesso!'),
+          this.toastService.success('Sua conta foi criada com sucesso', 'Parabéns!!!', {
+            timeOut: 3000,
+            positionClass : 'toast-top-center'
+          })
           this.router.navigate(['/dashboard']) 
         },
         error: (error) => {
