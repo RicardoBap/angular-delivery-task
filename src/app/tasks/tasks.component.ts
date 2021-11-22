@@ -35,7 +35,7 @@ export class TasksComponent implements OnInit {
     } else {
       this.taskService.create(this.newTask)
         .subscribe({
-          next: (task) => { this.tasks.push(task),
+          next: (task) => { this.tasks.unshift(task),
             this.newTask = new Task(NaN, '')
         },
           error: () => { alert("Ocorreu um erro no servidor, tente mais tarde") }
