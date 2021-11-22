@@ -3,6 +3,8 @@ import { Component, OnInit } from "@angular/core";
 import { Task } from "./shared/task.model";
 import { TaskService } from "./shared/task.service";
 
+import { ToastrService } from "ngx-toastr";
+
 @Component({
   selector: 'tasks',
   templateUrl: './tasks.component.html',
@@ -13,7 +15,7 @@ export class TasksComponent implements OnInit {
   tasks: Array<Task>
   newTask: Task
 
-  constructor(private taskService: TaskService) {
+  constructor(private taskService: TaskService, private toastService: ToastrService) {
     this.newTask = new Task(NaN, '')
   }
 
@@ -31,7 +33,10 @@ export class TasksComponent implements OnInit {
     this.newTask.title = this.newTask.title.trim()
 
     if(!this.newTask.title) {
-      alert("A tarefa deve ter um título")
+      this.toastService.warning('Preencha corretamente', 'Atarefa deve ter um título', {
+        timeOut: 3000,
+        positionClass : 'toast-top-center'
+      })
     } else {
       this.taskService.create(this.newTask)
         .subscribe({
