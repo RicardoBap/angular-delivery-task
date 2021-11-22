@@ -9,6 +9,8 @@ import { Task } from "../shared/task.model";
 import { TaskService } from "../shared/task.service";
 import { FormUtils } from "src/app/shared/form.utils";
 
+import { ToastrService } from "ngx-toastr";
+
 declare var $: any;
 
 @Component({
@@ -31,7 +33,8 @@ export class TaskDetailComponent implements OnInit, AfterViewInit {
     private taskService: TaskService,
     private route: ActivatedRoute,
     private location: Location,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private toastService: ToastrService
   ) {
     this.taskDoneOptions = [
       { value: false, text: "Pendente" },
@@ -84,7 +87,8 @@ export class TaskDetailComponent implements OnInit, AfterViewInit {
 
     this.taskService.update(this.task)      
       .subscribe({       
-        next: () => { alert('Tarefa atualizada com sucesso!') },
+        // next: () => { alert('Tarefa atualizada com sucesso!') },
+        next: () => { this.toastService.success('204', 'Tarefa atualizada com sucesso!') },
         error: () => { alert("Ocorreu um erro no servidor, tente mais tarde") }
       })
   }

@@ -56,9 +56,10 @@ import { ToastNoAnimationModule } from 'ngx-toastr';
     ReactiveFormsModule,
     RouterModule,
     ToastNoAnimationModule.forRoot(( { 
-      timeOut : 10000 , 
-      positionClass : 'toast-bottom-center' , 
-      preventDuplicates : true , 
+      timeOut : 1000, 
+      positionClass : 'toast-bottom-center', 
+      preventDuplicates : true,
+      //maxOpened: 1
     } ) ),
   ],
   providers: [
