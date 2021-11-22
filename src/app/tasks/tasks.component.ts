@@ -4,6 +4,7 @@ import { Task } from "./shared/task.model";
 import { TaskService } from "./shared/task.service";
 
 import { ToastrService } from "ngx-toastr";
+import { take } from "rxjs/operators";
 
 @Component({
   selector: 'tasks',
@@ -49,13 +50,33 @@ export class TasksComponent implements OnInit {
   }
 
   deleteTask(task: Task) {
-    if( confirm(`Deseja realmente excluir a tarefa "${task.title}`) ) {
-      this.taskService.delete(task.id)
-        .subscribe({
-          next: () => { this.tasks = this.tasks.filter(t => t != task) },
-          error: () => { alert("Ocorreu um erro no servidor, tente mais tarde") }
-        })
-    }
+    this.toastService.warning('Clique aqui para confirmar', 'Deseja mesmo excluir?!',  {
+      timeOut: 6000,
+      positionClass : 'toast-top-center'
+    })
+    .onTap
+    .pipe(take(1))
+    .subscribe(() => this.toasterClickedHandler(task));
+    // if( confirm(`Deseja realmente excluir a tarefa "${task.title}`) ) {
+    //   this.taskService.delete(task.id)
+    //     .subscribe({
+    //       next: () => { this.tasks = this.tasks.filter(t => t != task) },
+    //       error: () => { alert("Ocorreu um erro no servidor, tente mais tarde") }
+    //     })
+    // }
+  }
+
+  toasterClickedHandler(task: Task) {
+    console.log('Toastr clicked');
+    this.taskService.delete(task.id)
+      .subscribe({
+        next: () => { this.tasks = this.tasks.filter(t => t != task),
+          this.toastService.success('204', 'Excluído com sucesso', {
+            timeOut: 1000,
+            positionClass : 'toast-top-center'
+          }) },
+        error: () => { alert("Ocorreu um erro no servidor, tente mais tarde") }
+      })
   }
 
 }
