@@ -83,7 +83,7 @@ export class TaskService {
   }
 
   private handleErrors(error: HttpErrorResponse){
-    console.log("SALVANDO O ERRO NO ARQUIVO DE LOG - DETALHES DO ERRO => ", error)
+    //console.log("SALVANDO O ERRO NO ARQUIVO DE LOG - DETALHES DO ERRO => ", error)
     return throwError(console.log(error));
   }
 

@@ -15,19 +15,19 @@ export class ErrorInterceptor implements HttpInterceptor {
     private toastService: ToastrService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log('Passou no error interceptor')
+    //console.log('Passou no error interceptor')
     return next.handle(request)
       .pipe(         
         catchError(err => {         
           let errorObj = err;
           
           if (err instanceof HttpErrorResponse) {
-            console.log('Processing http error', err.status);           
+            //console.log('Processing http error', err.status);           
             
-            if(errorObj.error) {
-              //errorObj = err.error
-              console.log('inteceptor resumo', err.error)
-            }
+            // if(errorObj.error) {
+            //   //errorObj = err.error
+            //   console.log('inteceptor resumo', err.error)
+            // }
             // if(!errorObj.status) {
             //   errorObj = JSON.parse(err.error)
             //   console.log('inteceptor sem status code', err.error)

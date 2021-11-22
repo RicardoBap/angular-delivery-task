@@ -18,14 +18,14 @@ export class AuthInterceptor implements HttpInterceptor {
 
     let localUser = this.storage.getLocalUser();
 
-    console.log('TOKEN', localUser);
+    //console.log('TOKEN', localUser);
 
     if(localUser) {
-      console.log('adicionou cabecalho -->')
+      //console.log('adicionou cabecalho -->')
       const authRequest = request.clone({headers: request.headers.set('Authorization', '' + localUser.token)});
         return next.handle(authRequest);
     } else {
-      console.log('não adicionou cabecalho -->')
+      // console.log('não adicionou cabecalho -->')
       return next.handle(request)
     }
   }    
