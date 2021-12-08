@@ -19,6 +19,8 @@ import { TasksComponent } from './tasks/tasks.component';
 import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 import { TaskSearchComponent } from './navbar/task-search/task-search.component';
 
+import { HomeComponent } from './home/home.component';
+
 // IMPORTS SERVICES
 import { AuthService } from './shared/auth.service';
 import { TaskService } from './tasks/shared/task.service';
@@ -40,6 +42,7 @@ import { ToastNoAnimationModule } from 'ngx-toastr';
   declarations: [
     AppComponent,
     DasboardComponent,
+    HomeComponent,
     NavbarComponent,
     SignInFormComponent,
     SignUpFormComponent,

@@ -31,7 +31,7 @@ export class TaskService {
   getImportant(): Observable<any|Task[]> {
     return this.getAll()
       .pipe(
-        map((tasks) =>  tasks.slice(0, 3) ),
+        map((tasks) =>  tasks.slice(0, 5) ),
         catchError(this.handleErrors)
       )
   }

@@ -9,9 +9,12 @@ import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 
 import { AuthGuard } from './guards/auth.guard';
 import { NotAuthenticatedGuard } from './guards/not-authenticated.guard';
+import { HomeComponent } from './home/home.component';
 
 const ROUTES: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  //{ path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DasboardComponent, canActivate: [AuthGuard] },
   { path: 'tasks', component: TasksComponent, canActivate: [AuthGuard] },
   { path: 'tasks/:id', component: TaskDetailComponent, canActivate: [AuthGuard] },
