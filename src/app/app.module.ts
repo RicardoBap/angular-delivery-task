@@ -20,6 +20,7 @@ import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 import { TaskSearchComponent } from './navbar/task-search/task-search.component';
 
 import { HomeComponent } from './home/home.component';
+import { TopPageComponent } from './home/top-page/top-page.component';
 
 // IMPORTS SERVICES
 import { AuthService } from './shared/auth.service';
@@ -48,7 +49,8 @@ import { ToastNoAnimationModule } from 'ngx-toastr';
     SignUpFormComponent,
     TasksComponent,
     TaskDetailComponent,
-    TaskSearchComponent
+    TaskSearchComponent,
+    TopPageComponent
   ],
   imports: [
     BrowserModule,
