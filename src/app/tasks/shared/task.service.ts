@@ -8,9 +8,16 @@ import { StorageService } from "src/app/shared/storage/storage.service";
 
 import { Task } from "./task.model";
 
+// AMBIENTES
+import { environment } from "src/environments/environment.prod";
+// import { environment } from "src/environments/environment";
+
+
 @Injectable()
 export class TaskService {
-  tasksURL = "http://localhost:3000/tasks" // api/tasks"
+  //tasksURL = "http://localhost:3000/tasks" // api/tasks"
+
+  tasksURL: string
   //tasksURL = "https://ruby-manager.herokuapp.com/tasks" 
   headers = new HttpHeaders()
       .append('Content-Type', 'application/json')
@@ -18,7 +25,9 @@ export class TaskService {
 
   constructor(
     private http: HttpClient,
-    private storage: StorageService) {}
+    private storage: StorageService) {
+      this.tasksURL = `${environment.apiUrl}/tasks`
+    }
 
   getAll(): Observable<any|Task[]> {
     return this.http.get<any>(this.tasksURL, { headers: this.headers })

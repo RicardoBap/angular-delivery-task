@@ -6,12 +6,18 @@ import { StorageService } from "./storage/storage.service";
 import { LocalUser } from "./storage/local_user";
 import { User } from "./user.model";
 import { Observable, throwError } from "rxjs";
-import { catchError, map, switchMap } from "rxjs/operators";
+import { catchError, map } from "rxjs/operators";
+
+// AMBIENTES
+import { environment } from "src/environments/environment.prod";
+// import { environment } from "src/environments/environment";
 
 @Injectable()
 export class AuthService {
-  sessionsURL = "http://localhost:3000/sessions"
-  usersURL = "http://localhost:3000/users"
+  //sessionsURL = "http://localhost:3000/sessions"
+  //usersURL = "http://localhost:3000/users"
+  sessionsURL: string
+  usersURL: string
 
   //sessionsURL = "https://ruby-manager.herokuapp.com/sessions"
   //usersURL = "https://ruby-manager.herokuapp.com/users"
@@ -19,7 +25,10 @@ export class AuthService {
       .append('Content-Type', 'application/json')
       .append('Accept', 'application/rbk.taskmanager.v1')
 
-  constructor(private http: HttpClient, private storage: StorageService) {}
+  constructor(private http: HttpClient, private storage: StorageService) {
+    this.sessionsURL = `${environment.apiUrl}/sessions`
+    this.usersURL = `${environment.apiUrl}/users`
+  }
 
   signIn(loginForm: any): Promise<void> {
     let body = {
