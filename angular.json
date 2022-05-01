@@ -2,6 +2,11 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
+  "cli": {
+    "cache": {
+      "enabled": false
+    }
+  },
   "projects": {
     "task-manager": {
       "projectType": "application",
@@ -36,7 +41,7 @@
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/moment/min/moment-with-locales.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"            
+              "node_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"
             ]
           },
           "configurations": {
@@ -44,7 +49,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "4mb", 
+                  "maximumWarning": "4mb",
                   "maximumError": "4mb"
                 },
                 {
