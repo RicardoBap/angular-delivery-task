@@ -60,12 +60,12 @@ import { ToastNoAnimationModule } from 'ngx-toastr';
     //HttpClientInMemoryWebApiModule.forRoot(InMemoryTaskDataService),
     ReactiveFormsModule,
     RouterModule,
-    ToastNoAnimationModule.forRoot(( { 
-      timeOut : 1000, 
-      positionClass : 'toast-bottom-center', 
-      preventDuplicates : true,
+    ToastNoAnimationModule.forRoot(({
+      timeOut: 1000,
+      positionClass: 'toast-bottom-center',
+      preventDuplicates: true,
       //maxOpened: 1
-    } ) ),
+    })),
   ],
   providers: [
     AuthGuard,
