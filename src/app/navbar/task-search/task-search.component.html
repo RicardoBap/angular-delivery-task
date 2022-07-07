@@ -1,7 +1,7 @@
 <div style="position: relative;">
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Busca de tarefas"
-      #searchInput (keyup)="search(searchInput.value)">
+    <input type="text" class="form-control" placeholder="Busca de tarefas" #searchInput
+      (keyup)="search(searchInput.value)">
   </div>
 
   <div class="list-group search" *ngIf="tasks">

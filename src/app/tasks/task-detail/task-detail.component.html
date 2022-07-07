@@ -1,13 +1,13 @@
 <div class="container">
-  <h1 class="page-header" >Detalhes da Tarefa: {{ task.title }}</h1>
+  <h4 class="mt-3 mb-3">Detalhes da Tarefa: {{ task.title }}</h4>
 
-  <form [formGroup]="reactiveTaskForm" (ngSubmit)="updateTask()" >
-    <div class="row">
+  <form class="was-validated" [formGroup]="reactiveTaskForm" (ngSubmit)="updateTask()">
+    <div class="row mb-3">
       <!-- TITLE -->
-      <div class="form-group  col-md-6  has-feedback" [ngClass]="formUtils.fieldClassErrorOrSuccess('title')" >
-        <label for="title" class="control-label">Titulo</label>
-        <input class="form-control" type="text" id="title" formControlName="title" >
-        <span class="glyphicon  form-control-feedback"  [ngClass]="formUtils.iconClassErrorOrSuccess('title')" ></span>
+      <div class="col-md-6  has-feedback" [ngClass]="formUtils.fieldClassErrorOrSuccess('title')">
+        <label for="title" class="form-label mb-1">Titulo</label>
+        <input class="form-control" type="text" id="title" formControlName="title" required>
+        <span class="valid-feedback" [ngClass]="formUtils.iconClassErrorOrSuccess('title')"></span>
         <div *ngIf="formUtils.showFieldError(formUtils.msg.title)" class="text-danger">
           <div *ngIf="formUtils.msg.title.errors?.required">O título é obrigatório</div>
           <div *ngIf="formUtils.msg.title.errors?.minlength">O título deve ter no mínimo 2 caracters</div>
@@ -16,24 +16,24 @@
       </div>
 
       <!-- DEADLINE -->
-      <div class="form-group  col-md-3  has-feedback" [ngClass]="formUtils.fieldClassErrorOrSuccess('deadline')" >
-        <label for="deadline" class="control-label">Prazo de Entrega</label>
-        <input class="form-control" type="datetime" id="deadline" formControlName="deadline" >
-        <span class="glyphicon  form-control-feedback"  [ngClass]="formUtils.iconClassErrorOrSuccess('deadline')" ></span>
+      <div class="col-md-3  has-feedback" [ngClass]="formUtils.fieldClassErrorOrSuccess('deadline')">
+        <label for="deadline" class="form-label mb-1">Prazo de Entrega</label>
+        <input class="form-control" type="datetime" id="deadline" formControlName="deadline" required>
+        <span class="glyphicon  form-control-feedback" [ngClass]="formUtils.iconClassErrorOrSuccess('deadline')"></span>
         <div *ngIf="formUtils.showFieldError(formUtils.msg.deadline)" class="text-danger">
           O prazo de entrega é obrigatório
         </div>
       </div>
 
       <!-- DONE -->
-      <div class="form-group  col-md-3  has-feedback" [ngClass]="formUtils.fieldClassErrorOrSuccess('done')" >
-        <label for="done" class="control-label">Situação</label>
-        <select type="text" class="form-control" id="done"formControlName="done" >
-          <option *ngFor="let option of taskDoneOptions" [value]="option.value" >
+      <div class="col-md-3  has-feedback" [ngClass]="formUtils.fieldClassErrorOrSuccess('done')">
+        <label for="done" class="form-label mb-1">Situação</label>
+        <select type="text" class="form-control" id="done" formControlName="done" required>
+          <option *ngFor="let option of taskDoneOptions" [value]="option.value">
             {{ option.text }}
           </option>
         </select>
-        <span class="glyphicon  form-control-feedback"  [ngClass]="formUtils.iconClassErrorOrSuccess('done')" ></span>
+        <span class="glyphicon  form-control-feedback" [ngClass]="formUtils.iconClassErrorOrSuccess('done')"></span>
         <div *ngIf="formUtils.showFieldError(formUtils.msg.done)" class="text-danger">
           A situação é obrigatória
         </div>
@@ -41,10 +41,10 @@
     </div>
 
     <!-- DESCRIPTION -->
-    <div class="row">
-      <div class="form-group col-md-12">
-        <label for="description" class="control-label">Descrição</label>
-        <textarea class="form-control" rows="4" id="description" formControlName="description" >
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <label for="description" class="form-label mb-1">Descrição</label>
+        <textarea class="form-control" rows="4" id="description" formControlName="description">
         </textarea>
       </div>
     </div>
@@ -52,7 +52,7 @@
     <button type="submit" class="btn btn-success btn-update" [disabled]="reactiveTaskForm.invalid">
       Atualizar
     </button>
-    <button type="button" class="btn btn-default" (click)="goBack()" >    
+    <button type="button" class="btn btn-outline-info ms-2" (click)="goBack()">
       Voltar
     </button>
 
