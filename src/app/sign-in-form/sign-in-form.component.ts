@@ -3,13 +3,14 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
 
-import { AuthService } from "../shared/auth.service";
+import { AuthService } from "../core/shared/auth.service";
 
-import { FormUtils } from "../shared/form.utils";
+import { FormUtils } from "../core/shared/form.utils";
 
 @Component({
   selector: 'sign-in-form',
-  templateUrl: 'sign-in-form.component.html'
+  templateUrl: 'sign-in-form.component.html',
+  styles: [``]
 })
 export class SignInFormComponent {
   loginForm: FormGroup
@@ -21,10 +22,10 @@ export class SignInFormComponent {
     private authService: AuthService,
     private router: Router,
     private toastService: ToastrService) {
-      
-      this.setupForm()
-      this.formUtils = new FormUtils(this.loginForm)
-      this.submitted = false
+
+    this.setupForm()
+    this.formUtils = new FormUtils(this.loginForm)
+    this.submitted = false
   }
 
   signInUser() {
@@ -35,8 +36,8 @@ export class SignInFormComponent {
       })
       .catch(erro => {
         this.submitted = false
-        if(erro == 'Usuario ou senha inválidos')
-        this.toastService.error('401', erro)
+        if (erro == 'Usuario ou senha inválidos')
+          this.toastService.error('401', erro)
       })
   }
 

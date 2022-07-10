@@ -1,7 +1,10 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
+// IMPORT RXJS
 import { Observable } from "rxjs";
+
+// IMPORT SERVICES
 import { AuthService } from "../shared/auth.service";
 import { StorageService } from "../shared/storage/storage.service";
 
@@ -12,7 +15,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   constructor(
     private storage: StorageService,
-    private auth: AuthService) {}  
+    private auth: AuthService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -20,15 +23,15 @@ export class AuthInterceptor implements HttpInterceptor {
 
     //console.log('TOKEN', localUser);
 
-    if(localUser) {
+    if (localUser) {
       //console.log('adicionou cabecalho -->')
-      const authRequest = request.clone({headers: request.headers.set('Authorization', '' + localUser.token)});
-        return next.handle(authRequest);
+      const authRequest = request.clone({ headers: request.headers.set('Authorization', '' + localUser.token) });
+      return next.handle(authRequest);
     } else {
       // console.log('não adicionou cabecalho -->')
       return next.handle(request)
     }
-  }    
+  }
 }
 
 export const AuthInterceptorProvider = {

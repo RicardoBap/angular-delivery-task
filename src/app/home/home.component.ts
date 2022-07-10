@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
       duration: 1,
       scrollTrigger: '.square'
     })
-    
+
     gsap.to('.square', {
       x: -1500,
       duration: 1,
@@ -45,6 +45,6 @@ export class HomeComponent implements OnInit {
     // }) 
   }
 
-  
+
 
 }

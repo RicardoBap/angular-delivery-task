@@ -7,7 +7,7 @@ import { switchMap } from 'rxjs/operators';
 
 import { Task } from "../shared/task.model";
 import { TaskService } from "../shared/task.service";
-import { FormUtils } from "src/app/shared/form.utils";
+import { FormUtils } from "src/app/core/shared/form.utils";
 
 import { ToastrService } from "ngx-toastr";
 
@@ -16,7 +16,7 @@ declare var $: any;
 @Component({
   selector: 'task-detail',
   templateUrl: './task-detail.component.html',
-  providers: [ Location ],
+  providers: [Location],
   styles: [`
     .form-control-feedback { margin-right: 20px; } 
     .btn-update { margin-right: 5px; }`
@@ -49,23 +49,23 @@ export class TaskDetailComponent implements OnInit, AfterViewInit {
     this.task = new Task(NaN, '')
     this.route.params
       .pipe(
-        switchMap((params: Params) => this.taskService.getById(+params['id']))    
+        switchMap((params: Params) => this.taskService.getById(+params['id']))
       )
       .subscribe({
-        next: (task) => { this.setTask(task)},
+        next: (task) => { this.setTask(task) },
         error: (_erro) => { alert("Ocorreu um erro no servidor, tente mais tarde") }
-      })    
+      })
   }
 
   public ngAfterViewInit() {
     $("#deadline").datetimepicker({
       'sideBySide': true,
       'locale': 'pt-BR'
-    }).on('dp.change', () => this.reactiveTaskForm.patchValue( { deadline: $("#deadline").val() } )) 
+    }).on('dp.change', () => this.reactiveTaskForm.patchValue({ deadline: $("#deadline").val() }))
   }
 
   setTask(task: Task): void {
-    this.task = task       
+    this.task = task
     this.reactiveTaskForm.patchValue(task)
   }
 
@@ -79,8 +79,8 @@ export class TaskDetailComponent implements OnInit, AfterViewInit {
     this.task.done = this.reactiveTaskForm.get('done')?.value
     this.task.description = this.reactiveTaskForm.get('description')?.value
 
-    this.taskService.update(this.task)      
-      .subscribe({       
+    this.taskService.update(this.task)
+      .subscribe({
         next: () => { this.toastService.success('204', 'Tarefa atualizada com sucesso!') },
         error: () => { alert("Ocorreu um erro no servidor, tente mais tarde") }
       })

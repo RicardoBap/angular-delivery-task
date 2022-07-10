@@ -12,18 +12,18 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   constructor(
     private router: Router,
-    private toastService: ToastrService) {}
+    private toastService: ToastrService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     //console.log('Passou no error interceptor')
     return next.handle(request)
-      .pipe(         
-        catchError(err => {         
+      .pipe(
+        catchError(err => {
           let errorObj = err;
-          
+
           if (err instanceof HttpErrorResponse) {
             //console.log('Processing http error', err.status);           
-            
+
             // if(errorObj.error) {
             //   //errorObj = err.error
             //   console.log('inteceptor resumo', err.error)
@@ -32,7 +32,7 @@ export class ErrorInterceptor implements HttpInterceptor {
             //   errorObj = JSON.parse(err.error)
             //   console.log('inteceptor sem status code', err.error)
             // } 
-            switch(err.status) {
+            switch (err.status) {
               case 0:
                 this.handle0(errorObj)
                 break
@@ -47,13 +47,13 @@ export class ErrorInterceptor implements HttpInterceptor {
 
               // default:
               //   this.handleDefaultError(errorObj);
-            }               
-          }        
+            }
+          }
 
-          return throwError(errorObj) 
+          return throwError(errorObj)
         })
-      )       
-    
+      )
+
   }
 
   handle0(errorObj: any) {
@@ -63,7 +63,7 @@ export class ErrorInterceptor implements HttpInterceptor {
   handle500(errorObj: any) {
     this.toastService.error(errorObj.status, errorObj.statusText)
   }
-  
+
   // handle422(errorObj: any) {
   //   //errorObj =  errorObj.status
   //   console.log(errorObj)

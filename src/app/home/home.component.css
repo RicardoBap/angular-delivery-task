@@ -1,4 +1,4 @@
-* {
+/* * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -11,12 +11,12 @@
   background-color: #0B0C12;
 
   animation: scroll-hidden 14s ease 0s forwards;
-}
+} */
 
 /* ------------------- *\
      BLOQUEIA SCROLL
 \* ------------------- */
-@keyframes scroll-hidden {
+/* @keyframes scroll-hidden {
   0% {
     overflow: hidden;
   }
@@ -25,10 +25,10 @@
     overflow: hidden;
   }
 
-  100% {
-    /* -webkit-filter: drop-shadow(0px 0px 50px rgba(247, 247, 247, 0.5)) drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.9));
+  100% { */
+/* -webkit-filter: drop-shadow(0px 0px 50px rgba(247, 247, 247, 0.5)) drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.9));
             filter: drop-shadow(0px 0px 50px rgba(247, 247, 247, 0.5)) drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.9)); */
-  }
+/* }
 }
 
 h1 {
@@ -44,10 +44,7 @@ p {
 .container-recp {
   max-width: 100%;
   height: 100vh;
-  /* view port <- referencia o tamanho da tela */
   background-color: #0B0C12;
-
-  /* border: 1px solid yellow; */
 }
 
 .square {
@@ -70,14 +67,13 @@ h1 {
   background-color: #707070;
 
   margin-top: 200px;
-}
-
+} */
 
 
 /* ----------------- *\
      BUTTON SCROLL
 \* ----------------- */
-.scroll-down {
+/* .scroll-down {
   height: 50px;
   width: 30px;
   border: 2px solid #E6EAF0;
@@ -127,12 +123,12 @@ h1 {
     opacity: 0;
     top: 90%;
   }
-}
+} */
 
 /* --------------------------- *\
     APRESENTA BOTTON SCROLL
 \* --------------------------- */
-.btn-scroll {
+/* .btn-scroll {
   animation: btn-scroll-down 15s ease forwards;
 }
 
@@ -155,3 +151,5 @@ h1 {
   left: 47%;
   bottom: 80px;
 }
+
+*/
