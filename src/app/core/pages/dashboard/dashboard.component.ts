@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 
 import { TaskService } from "../tasks/shared/task.service";
 
-import { Task } from "src/app/core/tasks/shared/task.model";
+import { Task } from "src/app/core/pages/tasks/shared/task.model";
 
 @Component({
   selector: 'dashboard',

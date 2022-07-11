@@ -1,19 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-// IMPORT GUARDS
-import { AuthGuard } from './guards/auth.guard';
-
-// IMPORT COMPONENT
-import { DasboardComponent } from './dashboard/dashboard.component';
-import { TasksComponent } from './tasks/tasks.component';
-import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
-
 
 const ROUTES: Routes = [
-  { path: 'dashboard', component: DasboardComponent, canActivate: [AuthGuard] },
-  { path: 'tasks', component: TasksComponent, canActivate: [AuthGuard] },
-  { path: 'tasks/:id', component: TaskDetailComponent, canActivate: [AuthGuard] }
+  {
+    path: 'dashboard', loadChildren: () =>
+      import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule)
+  },
+  {
+    path: 'tasks', loadChildren: () =>
+      import('./pages/tasks/tasks.module').then(m => m.TasksModule)
+  },
+  {
+    path: 'sign-in', loadChildren: () =>
+      import('./pages/sign-in-form/sign-in-form.module').then(m => m.SignInFormModule)
+  },
+  {
+    path: 'sign-up', loadChildren: () =>
+      import('./pages/sign-up-form/sign-up-form.module').then(m => m.SignUpFormModule)
+  }
 ]
 
 @NgModule({

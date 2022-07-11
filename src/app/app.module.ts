@@ -10,9 +10,6 @@ import { CoreRoutingModule } from './core/core.routing.module';
 // IMPORT COMPONENTS
 import { AppComponent } from './app.component';
 
-import { SignInFormComponent } from './sign-in-form/sign-in-form.component';
-import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
-
 import { HomeComponent } from './home/home.component';
 import { TopPageComponent } from './home/top-page/top-page.component';
 
@@ -20,10 +17,8 @@ import { TopPageComponent } from './home/top-page/top-page.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    SignInFormComponent,
-    SignUpFormComponent,
 
+    HomeComponent,
     TopPageComponent
   ],
   imports: [

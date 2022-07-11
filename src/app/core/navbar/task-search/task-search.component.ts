@@ -4,8 +4,8 @@ import { Router } from "@angular/router";
 import { of, Subject } from "rxjs";
 import { debounceTime, distinctUntilChanged, switchMap } from "rxjs/operators";
 
-import { Task } from "src/app/core/tasks/shared/task.model";
-import { TaskService } from "src/app/core/tasks/shared/task.service";
+import { Task } from "src/app/core/pages/tasks/shared/task.model";
+import { TaskService } from "src/app/core/pages/tasks/shared/task.service";
 
 @Component({
   selector: 'task-search',

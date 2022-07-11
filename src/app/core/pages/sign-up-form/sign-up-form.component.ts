@@ -3,9 +3,9 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
 
-import { AuthService } from "../core/shared/auth.service";
+import { AuthService } from "../../shared/auth.service";
 
-import { FormUtils } from "../core/shared/form.utils";
+import { FormUtils } from "../../shared/form.utils";
 
 @Component({
   selector: 'sign-up-form',
