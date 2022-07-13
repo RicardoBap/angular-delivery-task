@@ -7,7 +7,11 @@ import { HomeComponent } from './home/home.component';
 
 const ROUTES: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full', canActivate: [NotAuthenticatedGuard] },
-  { path: 'home', component: HomeComponent, canActivate: [NotAuthenticatedGuard] }
+  { path: 'home', component: HomeComponent, canActivate: [NotAuthenticatedGuard] },
+  {
+    path: 'index', loadChildren: () =>
+      import('./pages/pages.module').then(m => m.PagesModule)
+  }
 ]
 
 @NgModule({

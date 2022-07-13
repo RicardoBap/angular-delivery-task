@@ -1,0 +1,229 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+@media screen and (min-width: 320px) {
+  .rk-page-wrapper {
+    width: 100%;
+    height: 100vh;
+    display: block;
+    background-color: #1c1c1c;
+    border: 30px solid #000;
+  }
+
+  .rk-topbar {
+    width: 100%;
+    height: 110px;
+    display: block;
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  .rk-logo {
+    width: 74px;
+    height: 110px;
+    float: left;
+    margin-left: 60px;
+    background-color: #487EEB;
+    border-radius: 0px 0px 37px 0px;
+  }
+
+  .rk-logo img {
+    width: 62px;
+    height: 31px;
+    display: block;
+    margin: 50px auto 0 auto;
+  }
+
+  .rk-menu {
+    display: none;
+  }
+
+  .rk-btn-contact {
+    width: 45px;
+    height: 45px;
+    display: block;
+    background-color: #487EEB;
+    background-image: url('../../../assets/icon-contact/icon-contato.svg');
+    background-repeat: no-repeat;
+    position: fixed;
+    bottom: 45px;
+    right: 45px;
+    border-radius: 50%;
+    z-index: 200;
+  }
+
+  .rk-btn-contact:hover {
+    background-position-y: -45px;
+  }
+
+  .rk-contact-info {
+    width: 252px;
+    height: 172px;
+    padding: 24px;
+    position: fixed;
+    bottom: 122px;
+    right: 64px;
+    z-index: 200;
+  }
+
+  .rk-contact-info-inner {
+    display: table;
+    width: 100%;
+    float: right;
+  }
+
+  .rk-contact-info-inner p {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .rk-social-links {
+    width: 100%;
+    height: 45px;
+    display: block;
+    position: relative;
+    left: -12px;
+  }
+
+  .rk-social {
+    width: 45px;
+    height: 45px;
+    display: inline-block;
+  }
+
+  .rk-social>img {
+    width: 28px;
+    height: auto;
+    display: block;
+    margin: 12px auto 0px;
+  }
+
+  .rk-corner {
+    width: 25px;
+    height: 25px;
+    display: block;
+    float: right;
+    display: relative;
+  }
+
+  .rk-corner:after {
+    content: '';
+    width: 25px;
+    height: 25px;
+    display: block;
+    position: absolute;
+    bottom: -24px;
+    right: 0;
+    background: transparent url('../../../assets/icon-contact/corner.svg') no-repeat;
+  }
+}
+
+@media screen and (min-width: 576px) {}
+
+@media screen and (min-width: 768px) {}
+
+@media screen and (min-width: 992px) {
+  .rk-menu {
+    display: table;
+    float: left;
+    height: 110px;
+    margin-left: 30px;
+  }
+
+  .rk-menu a {
+    font-family: 'Ubuntu';
+    font-size: 16px;
+    color: #bcbcbc;
+    text-transform: lowercase;
+    text-decoration: none;
+    display: inline-block;
+    margin: 50px 20px 0 20px;
+    font-weight: 400;
+    position: relative;
+  }
+
+  .rk-menu a:first-child {
+    margin-left: 0;
+  }
+
+  .rk-menu a:hover {
+    color: #487EEB;
+  }
+
+  .rk-menu a:before {
+    content: '';
+    width: 100%;
+    height: 4px;
+    background-color: #487EEB;
+    display: block;
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    transition: all 0.2s ease-out;
+    transform: scale(0, 1);
+    transform-origin: center left;
+  }
+
+  .rk-menu a:hover:before {
+    transform: scale(1, 1);
+  }
+
+}
+
+@media screen and (min-width: 1200px) {}
+
+@media screen and (min-width: 1364px) {}
+
+@media screen and (min-width: 1600px) {}
+
+/* CLASSES UTILITÁRIAS */
+/* TEXT */
+.rk-text-blue {
+  color: #487EEB;
+}
+
+.rk-text-dark {
+  color: #4d4c4c;
+}
+
+.rk-text-light {
+  color: #bcbcbc;
+}
+
+.rk-text-black {
+  color: #000;
+}
+
+/* BACKGROUD */
+.rk-bg-blue {
+  background-color: #487EEB;
+}
+
+.rk-bg-dark {
+  background-color: #4d4c4c;
+}
+
+.rk-bg-light {
+  background-color: #bcbcbc;
+}
+
+.rk-bg-black {
+  background-color: #000;
+}
+
+/* TITLE */
+.rk-title {
+  font-family: 'Abril Fatface', serif;
+  font-weight: normal;
+}

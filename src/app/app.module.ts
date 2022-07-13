@@ -6,13 +6,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { CoreRoutingModule } from './core/core.routing.module';
+import { PagesModule } from './pages/pages.module';
 
 // IMPORT COMPONENTS
 import { AppComponent } from './app.component';
 
 import { HomeComponent } from './home/home.component';
 import { TopPageComponent } from './home/top-page/top-page.component';
-
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import { TopPageComponent } from './home/top-page/top-page.component';
     BrowserModule,
     AppRoutingModule,
     CoreRoutingModule,
-    CoreModule
+    CoreModule,
+    PagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

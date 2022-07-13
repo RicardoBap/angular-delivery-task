@@ -13,26 +13,17 @@
         </div>
 
         <div class="col-4 d-flex justify-content-end align-items-center">
-          <!-- <a class="link-secondary" href="#" aria-label="Search">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
-              stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
-              viewBox="0 0 24 24">
-              <title>Search</title>
-              <circle cx="10.5" cy="10.5" r="7.5"></circle>
-              <path d="M21 21l-5.2-5.2"></path>
-            </svg>
-          </a> -->
-
           <a class="btn btn-sm btn-outline-secondary" routerLink='/sign-in'>Sign in</a>
         </div>
+
       </div>
     </header>
 
     <div class="nav-scroller py-1 mb-2">
       <nav class="nav d-flex justify-content-between">
         <a class="p-2 link-secondary" href="#">Home</a>
-        <!-- <a class="p-2 link-secondary" href="#">U.S.</a>
-        <a class="p-2 link-secondary" href="#">Technology</a>
+        <a class="p-2 link-secondary" routerLink='/index'>Index</a>
+        <!-- <a class="p-2 link-secondary" href="#">Technology</a>
         <a class="p-2 link-secondary" href="#">Design</a>
         <a class="p-2 link-secondary" href="#">Culture</a>
         <a class="p-2 link-secondary" href="#">Business</a>
@@ -47,60 +38,68 @@
   </div>
 
   <main class="container">
-    <div class="mb-4 rounded bg-dark">
-      <app-top-page></app-top-page>
-      <!-- <div class="col-md-6 px-0">
+    <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+      <div class="col-md-6 px-0">
+        <h1 class="display-4 fst-italic">Desenvolvimento WEB</h1>
+        <p class="lead my-3">
+          processo de criação, construção e manutenção de sites e aplicações para a internet
+          ou intranet. Esse processo inclui a codificação,
+          a programação e gerenciamento de dados que viabilizam a funcionalidade deles.
+        </p>
+        <!-- <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p> -->
+      </div>
+    </div>
+
+    <!-- <div class="mb-4 rounded bg-dark"> -->
+    <!-- <app-top-page></app-top-page> -->
+    <!-- <div class="col-md-6 px-0">
         <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
         <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently
           about what’s most interesting in this post’s contents.</p>
         <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
-      </div> -->
-    </div>
+      </div> 
+    </div> -->
 
     <div class="row mb-2">
       <div class="col-md-6">
         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
           <div class="col p-4 d-flex flex-column position-static">
-            <strong class="d-inline-block mb-2 text-primary">World</strong>
-            <h3 class="mb-0">Featured post</h3>
-            <div class="mb-1 text-muted">Nov 12</div>
-            <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to
-              additional content.</p>
-            <a href="#" class="stretched-link">Continue reading</a>
+            <strong class="d-inline-block mb-2">Back-End</strong>
+            <h3 class="mb-0 text-success">Spring</h3>
+            <div class="mb-1 text-muted"></div>
+            <p class="card-text mb-auto">
+              O Spring fornece um modelo abrangente de programação e configuração
+              para aplicativos modernos baseados em Java.
+            </p>
+            <!-- <a href="#" class="stretched-link">Continue reading</a> -->
           </div>
-          <div class="col-auto d-none d-lg-block">
-            <!-- <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img"
-              aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef"
-                dy=".3em">Thumbnail</text>
-            </svg> -->
-            <div style="height: 250px; width: 200px">
-              <img src="./../../assets/ricardo_1.jpg" alt="Ricardo">
-            </div>
 
+          <div class="col-auto d-none d-lg-block">
+            <div style="height: 250px; width: 200px">
+              <img src="./../../assets/img/spring.jpg" alt="Ricardo">
+            </div>
           </div>
+
         </div>
       </div>
       <div class="col-md-6">
         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
           <div class="col p-4 d-flex flex-column position-static">
-            <strong class="d-inline-block mb-2 text-success">Design</strong>
-            <h3 class="mb-0">Post title</h3>
-            <div class="mb-1 text-muted">Nov 11</div>
-            <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional
-              content.</p>
-            <a href="#" class="stretched-link">Continue reading</a>
+            <strong class="d-inline-block mb-2">Front-End</strong>
+            <h3 class="mb-0 text-danger">Angular</h3>
+            <div class="mb-1 text-muted"></div>
+            <p class="mb-auto">
+              É um framework JavaScript de código aberto mantido pela Google para a construção de SPA
+              (sigla para Single Page Applications).</p>
+            <!-- <a href="#" class="stretched-link">Continue reading</a> -->
           </div>
-          <div class="col-auto d-none d-lg-block">
-            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img"
-              aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef"
-                dy=".3em">Thumbnail</text>
-            </svg>
 
+          <div class="col-auto d-none d-lg-block">
+            <div style="height: 250px; width: 200px">
+              <img src="./../../assets/img/angular.jpg" alt="Ricardo">
+            </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -152,7 +151,7 @@
             <dt>JavaScript (JS)</dt>
             <dd>The programming language used to build advanced Web sites and applications</dd>
           </dl>
-          <h2>Inline HTML elements</h2>
+          <h2 id="topo">Inline HTML elements</h2>
           <p>HTML defines a long list of available inline tags, a complete list of which can be found on the <a
               href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">Mozilla Developer Network</a>.</p>
           <ul>
@@ -303,17 +302,10 @@
   </main>
 
   <footer class="blog-footer">
-    <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a
-        href="https://twitter.com/mdo">@mdo</a>.</p>
     <p>
-      <a href="#">Back to top</a>
+      <a href="#topo">Back to top</a>
     </p>
   </footer>
-
-
-
-
-
 </body>
 
 <!-- <div class='body'>
