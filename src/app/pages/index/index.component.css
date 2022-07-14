@@ -10,13 +10,38 @@ p {
   font-family: 'Ubuntu', sans-serif;
 }
 
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
 @media screen and (min-width: 320px) {
-  .rk-page-wrapper {
+
+  .rk-page-wrapper,
+  .rk-preloader {
     width: 100%;
     height: 100vh;
-    display: block;
+    display: table;
     background-color: #1c1c1c;
     border: 30px solid #000;
+  }
+
+  .rk-preloader {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  .rk-preloader-inner {
+    text-align: center;
+    margin-top: -45px;
   }
 
   .rk-topbar {
@@ -61,10 +86,7 @@ p {
     right: 45px;
     border-radius: 50%;
     z-index: 200;
-  }
-
-  .rk-btn-contact:hover {
-    background-position-y: -45px;
+    border: none;
   }
 
   .rk-contact-info {
@@ -75,6 +97,8 @@ p {
     bottom: 122px;
     right: 64px;
     z-index: 200;
+    display: none;
+    cursor: pointer;
   }
 
   .rk-contact-info-inner {
@@ -127,6 +151,17 @@ p {
     right: 0;
     background: transparent url('../../../assets/icon-contact/corner.svg') no-repeat;
   }
+
+  /* Home */
+  .rk-display-text {
+    margin-top: 10%;
+  }
+
+  #rk-home-presentation {
+    background-image: url('../../../assets/img/ricardo.png');
+    background-repeat: no-repeat;
+    background-position: 50% bottom;
+  }
 }
 
 @media screen and (min-width: 576px) {}
@@ -142,7 +177,7 @@ p {
   }
 
   .rk-menu a {
-    font-family: 'Ubuntu';
+    font-family: 'Ubuntu', sans-serif;
     font-size: 16px;
     color: #bcbcbc;
     text-transform: lowercase;
@@ -222,8 +257,75 @@ p {
   background-color: #000;
 }
 
+/* MARGEM */
+.rk-m-16 {
+  margin: 16px;
+}
+
+.rk-m-top-16 {
+  margin-top: 16px;
+}
+
+.rk-m-bottom-16 {
+  margin-bottom: 16px;
+}
+
+.rk-m-right-16 {
+  margin-right: 16px;
+}
+
+.rk-m-left-16 {
+  margin-left: 16px;
+}
+
+/* PADDING */
+.rk-p-16 {
+  padding: 16px;
+}
+
+.rk-p-top-16 {
+  padding-top: 16px;
+}
+
+.rk-p-bottom-16 {
+  padding-bottom: 16px;
+}
+
+.rk-p-right-16 {
+  padding-right: 16px;
+}
+
+.rk-p-left-16 {
+  padding-left: 16px;
+}
+
 /* TITLE */
+.rk-title-big {
+  font-size: 80px;
+}
+
 .rk-title {
   font-family: 'Abril Fatface', serif;
   font-weight: normal;
+}
+
+.rk-full-height {
+  height: 100vh;
+}
+
+.rk-first-section {
+  height: calc(100vh - 30px);
+}
+
+/* CLASSES DE COMPORTAMENTO */
+.rk-is-open {
+  display: block;
+}
+
+.rk-change-icon {
+  background-position-y: -45px;
+}
+
+.rk-fade-out {
+  animation: fadeOut 2s forwards ease-out;
 }

@@ -1,3 +1,10 @@
+<div class="rk-preloader" preLoaded [ngClass]="fadePreLoad">
+  <div class="rk-preloader-inner">
+    <img class="rk-m-bottom-16" src="../../../assets/loader/bear.svg" alt="Kuma">
+    <p class="rk-text-light rk-m-top-16">Aguarde um pouco... o kuma está acordando</p>
+  </div>
+</div>
+
 <header class="rk-topbar">
   <div class="rk-logo">
     <img src="../../../assets/logo/logo.svg" alt="Ricardo Kumagae UI/UX Design">
@@ -10,7 +17,7 @@
   </nav>
 </header>
 
-<div class="rk-contact-info rk-bg-black rk-text-light">
+<div class="rk-contact-info rk-bg-black rk-text-light" [ngClass]="openBoxContact">
   <div class="rk-contact-info-inner">
     <h2 class="rk-title rk-text-blue">Contato</h2>
     <p>ric_bap@hotmail.com</p>
@@ -29,12 +36,30 @@
   </div>
 
   <div class="rk-corner">
-
   </div>
 </div>
 
-<div class="rk-btn-contact">
+<button [ngClass]="changeIconContact" class="rk-btn-contact" (click)="contactInfo()">
+</button>
 
+<div class="rk-page-wrapper">
+  <section class="rk-full-height rk-first-section" id="rk-home-presentation">
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 col-md-2 offset-md-2"></div>
+        <div class="col-sm-12 col-md-3 offset-md-2 rk-display-text">
+          <h1 class="rk-title rk-text-blue rk-title-big">Olá!</h1>
+          <p class="rk-text-light">Meu nome é <span class="rk-text-blue">Ricardo Kumagae</span>, sou designer de <span
+              class="rk-text-blue">UX e UI</span>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="rk-full-height">
+
+  </section>
 </div>
-
-<div class="rk-page-wrapper"></div>
