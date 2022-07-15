@@ -1,5 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
@@ -30,6 +33,13 @@ export class IndexComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to('.btn-scroll-hidden', {
+      opacity: 0,
+      duration: 1,
+      scrollTrigger: '.square'
+    })
     //   const btnContact: any = document.querySelector('.rk-btn-contact');
 
     //   btnContact.addEventListener('click', () => {

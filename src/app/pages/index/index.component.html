@@ -1,65 +1,136 @@
-<div class="rk-preloader" preLoaded [ngClass]="fadePreLoad">
-  <div class="rk-preloader-inner">
-    <img class="rk-m-bottom-16" src="../../../assets/loader/bear.svg" alt="Kuma">
-    <p class="rk-text-light rk-m-top-16">Aguarde um pouco... o kuma está acordando</p>
-  </div>
-</div>
-
-<header class="rk-topbar">
-  <div class="rk-logo">
-    <img src="../../../assets/logo/logo.svg" alt="Ricardo Kumagae UI/UX Design">
-  </div>
-
-  <nav class="rk-menu">
-    <a href="#">Home</a>
-    <a href="#">Projetos</a>
-    <a href="#">Sobre</a>
-  </nav>
-</header>
-
-<div class="rk-contact-info rk-bg-black rk-text-light" [ngClass]="openBoxContact">
-  <div class="rk-contact-info-inner">
-    <h2 class="rk-title rk-text-blue">Contato</h2>
-    <p>ric_bap@hotmail.com</p>
-    <p>55 (19) 9 9659-2800</p>
-    <div class="rk-social-links">
-      <a href="#" class="rk-social">
-        <img src="../../../assets/icon-contact/instagram.svg" alt="Instagram">
-      </a>
-      <a href="#" class="rk-social">
-        <img src="../../../assets/icon-contact/linkedin.svg" alt="Linkedin">
-      </a>
-      <a href="#" class="rk-social">
-        <img src="../../../assets/icon-contact/dribbble.svg" alt="Dribbble">
-      </a>
+<div class="body">
+  <div class="rk-preloader" preLoaded [ngClass]="fadePreLoad">
+    <div class="rk-preloader-inner">
+      <img class="rk-m-bottom-16" src="../../../assets/loader/bear.svg" alt="Kuma">
+      <p class="rk-text-light rk-m-top-16">Aguarde um pouco... o kuma está acordando</p>
     </div>
   </div>
 
-  <div class="rk-corner">
-  </div>
-</div>
+  <!-- <div class="rk-overlay"></div>
+  <div class="rk-modal rk-bg-black">
+    <div class="rk-modal-header">
+      <h1 class="rk-title rk-text-blue">Deixe sua mensagem</h1>
+      <button class="rk-modal-close">X</button>
+    </div>
 
-<button [ngClass]="changeIconContact" class="rk-btn-contact" (click)="contactInfo()">
-</button>
-
-<div class="rk-page-wrapper">
-  <section class="rk-full-height rk-first-section" id="rk-home-presentation">
-
-    <div class="container-fluid">
+    <div class="rk-modal-body">
       <div class="row">
-        <div class="col-sm-12 col-md-2 offset-md-2"></div>
-        <div class="col-sm-12 col-md-3 offset-md-2 rk-display-text">
-          <h1 class="rk-title rk-text-blue rk-title-big">Olá!</h1>
-          <p class="rk-text-light">Meu nome é <span class="rk-text-blue">Ricardo Kumagae</span>, sou designer de <span
-              class="rk-text-blue">UX e UI</span>.
+        <div class="col-sm-12">
+          <p class="rk-text-light">Por favor informe seus dados e eu entrarei em conato com você o mais breve possível.
           </p>
         </div>
       </div>
+
+      <div class="row rk-m-top-16">
+        <div class="col-sm-12">
+          <form class="rk-form">
+            <div class="row">
+              <div class="col-sm-12 col-md-6 rk-p-right-4 rk-m-bottom-16">
+                <label class="rk-text-light" for="nome">Nome</label>
+                <input class="rk-field" type="text" name="nome" id="rk-nome">
+              </div>
+
+              <div class="col-sm-12 col-md-6 rk-p-left-4 rk-m-bottom-16">
+                <label class="rk-text-light" for="email">Email</label>
+                <input class="rk-field" type="email" name="email" id="rk-email">
+              </div>
+
+              <div class="col-sm-12 col-md-6 rk-p-right-4 rk-m-bottom-16">
+                <label class="rk-text-light" for="telefone">Telefone</label>
+                <input class="rk-field" type="tel" name="telefone" id="rk-telefone">
+              </div>
+
+              <div class="col-sm-12 col-md-6 rk-p-left-4 rk-m-bottom-16">
+                <label class="rk-text-light" for="site">Site</label>
+                <input class="rk-field" type="text" name="site" id="rk-site">
+              </div>
+
+              <div class="col-sm-12 col-md-12 rk-m-top-16">
+                <label class="rk-text-light" for="mensagem">Deixe sua mensagem</label>
+                <textarea class="rk-textarea" name="mensagem" id="rk-mensagem" rows="3"></textarea>
+              </div>
+            </div>
+
+            <div class="row justify-content-end rk-m-top-16">
+              <div class="col-sm-12 col-md-6">
+                <button class="rk-btn rk-btn-large rk-btn-blue rk-btn-block">
+                  Enviar
+                </button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <header class="rk-topbar">
+    <div class="rk-logo">
+      <img src="../../../assets/logo/logo.svg" alt="Ricardo Kumagae UI/UX Design">
     </div>
 
-  </section>
+    <nav class="rk-menu">
+      <a href="#">Home</a>
+      <a href="#">Projetos</a>
+      <a href="#">Sobre</a>
+    </nav>
+  </header>
 
-  <section class="rk-full-height">
+  <div class="rk-contact-info rk-bg-black rk-text-light" [ngClass]="openBoxContact">
+    <div class="rk-contact-info-inner">
+      <h2 class="rk-title rk-text-blue">Contato</h2>
+      <p>ric_bap@hotmail.com</p>
+      <p>55 (19) 9 9659-2800</p>
+      <div class="rk-social-links">
+        <a href="#" class="rk-social">
+          <img src="../../../assets/icon-contact/instagram.svg" alt="Instagram">
+        </a>
+        <a href="#" class="rk-social">
+          <img src="../../../assets/icon-contact/linkedin.svg" alt="Linkedin">
+        </a>
+        <a href="#" class="rk-social">
+          <img src="../../../assets/icon-contact/dribbble.svg" alt="Dribbble">
+        </a>
+      </div>
+    </div>
 
-  </section>
+    <div class="rk-corner">
+    </div>
+  </div>
+
+  <button [ngClass]="changeIconContact" class="rk-btn-contact" (click)="contactInfo()">
+  </button>
+
+  <div class="rk-page-wrapper">
+    <section class="rk-full-height rk-first-section" id="rk-home-presentation">
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12 col-md-2 offset-md-2"></div>
+          <div class="col-sm-12 col-md-3 offset-md-2 rk-display-text">
+            <h1 class="rk-title rk-text-blue rk-title-big">Olá!</h1>
+            <p class="rk-text-light rk-p-bottom-24">Meu nome é <span class="rk-text-blue">Ricardo Kumagae</span>, sou
+              designer de <span class="rk-text-blue">UX e UI</span>.
+            </p>
+            <button class="rk-btn rk-btn-large rk-btn-blue" href="#">Deixe sua mensagem</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-scroll-hidden">
+        <div class="btn-scroll">
+          <div class="label-scroll">SCROLL DOWN</div>
+          <div class="scroll-down"></div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="rk-full-height">
+      <div class="square"></div>
+
+    </section>
+  </div>
+
 </div>

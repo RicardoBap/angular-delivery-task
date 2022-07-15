@@ -6,13 +6,66 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-p {
+.body {
+  width: 100%;
+  height: 100vh;
+  animation: scroll-hidden 2s ease 0s forwards;
+}
+
+p,
+label {
   font-family: 'Ubuntu', sans-serif;
 }
 
 @keyframes fadeOut {
   to {
     opacity: 0;
+  }
+}
+
+@keyframes scroll-down {
+  0% {
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  60% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    top: 90%;
+  }
+}
+
+@keyframes btn-scroll-down {
+
+  0%,
+  90% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scroll-hidden {
+  0% {
+    overflow: hidden;
+  }
+
+  99% {
+    overflow: hidden;
+  }
+
+  100% {
+    /* -webkit-filter: drop-shadow(0px 0px 50px rgba(247, 247, 247, 0.5)) drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.9));
+            filter: drop-shadow(0px 0px 50px rgba(247, 247, 247, 0.5)) drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.9)); */
   }
 }
 
@@ -42,6 +95,78 @@ p {
   .rk-preloader-inner {
     text-align: center;
     margin-top: -45px;
+  }
+
+  /* OVERLAY */
+  .rk-overlay {
+    width: 100%;
+    height: 100vh;
+    display: block;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: rgba(72, 126, 235, 0.80);
+  }
+
+  /* MODAL */
+  .rk-modal {
+    width: 800px;
+    display: table;
+    position: fixed;
+    padding: 30px;
+    border-radius: 0px 30px 30px 30px;
+    top: 10%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 1200;
+  }
+
+  .rk-modal-header,
+  .rk-modal-body,
+  .rk-form {
+    width: 100%;
+    display: table;
+    position: relative;
+  }
+
+  .rk-modal-close {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    color: #bcbcbc;
+    text-align: center;
+    line-height: center;
+    cursor: pointer;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    border: none;
+    background-color: #2b2828;
+  }
+
+  /* MODAL FORM */
+  .rk-form,
+  label {
+    margin-bottom: 8px;
+    font-size: 16px;
+    display: inline-block;
+  }
+
+  .rk-field,
+  .rk-textarea {
+    width: 100%;
+    background-color: #2b2828;
+    border-radius: 4px;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    text-indent: 16px;
+  }
+
+  .rk-field {
+    height: 45px;
   }
 
   .rk-topbar {
@@ -154,14 +279,61 @@ p {
 
   /* Home */
   .rk-display-text {
-    margin-top: 10%;
+    margin-top: 150px;
   }
 
   #rk-home-presentation {
-    background-image: url('../../../assets/img/ricardo.png');
+    background-image: url('../../../assets/img/ricardo-pres-4.png');
     background-repeat: no-repeat;
-    background-position: 50% bottom;
+    background-position: 60% bottom;
+    position: relative;
   }
+
+  /* SCROL DOWN */
+  .scroll-down {
+    height: 50px;
+    width: 30px;
+    border: 2px solid #bcbcbc;
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+
+  .scroll-down::after,
+  .scroll-down::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    border: 2px solid #bcbcbc;
+    height: 10px;
+    width: 10px;
+    transform: translate(-50%, -100%) rotate(45deg);
+    border-top: transparent;
+    border-left: transparent;
+
+    animation: scroll-down 1s ease-in-out infinite;
+  }
+
+  .scroll-down::after {
+    top: 30%;
+    animation-delay: .5s;
+  }
+
+  .btn-scroll {
+    animation: btn-scroll-down 2s ease forwards;
+  }
+
+  .label-scroll {
+    color: #bcbcbc;
+    position: absolute;
+    font-size: 12px;
+    left: 48%;
+    bottom: 80px;
+  }
+
 }
 
 @media screen and (min-width: 576px) {}
@@ -223,6 +395,65 @@ p {
 @media screen and (min-width: 1600px) {}
 
 /* CLASSES UTILITÁRIAS */
+/* BOTOES */
+.rk-btn {
+  display: table;
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bolder;
+  border: none;
+  transition: all 0.2s ease-out;
+  text-transform: lowercase;
+}
+
+.rk-btn-block {
+  display: block;
+  width: 100%;
+}
+
+.rk-btn-small {
+  height: 28px;
+  padding: 0px 20px;
+  border-radius: 14px;
+  font-size: 12px;
+}
+
+.rk-btn-medium {
+  height: 38px;
+  padding: 0px 27px;
+  border-radius: 19px;
+  font-size: 14px;
+}
+
+.rk-btn-large {
+  height: 45px;
+  padding: 0px 35px;
+  border-radius: 23px;
+  font-size: 16px;
+}
+
+.rk-btn-blue {
+  background-color: #487EEB;
+  color: #1c1c1c;
+}
+
+.rk-btn-blue:hover {
+  background-color: #244993;
+  color: #fff;
+}
+
+.rk-btn-dark {
+  background-color: #151515;
+  color: #487EEB;
+}
+
+.rk-btn-dark:hover {
+  background-color: #2b2828;
+  color: #fff;
+}
+
+
+
 /* TEXT */
 .rk-text-blue {
   color: #487EEB;
@@ -278,7 +509,28 @@ p {
   margin-left: 16px;
 }
 
-/* PADDING */
+/* PADDING - 4 */
+.rk-p-4 {
+  padding: 4px;
+}
+
+.rk-p-top-4 {
+  padding-top: 4px;
+}
+
+.rk-p-bottom-4 {
+  padding-bottom: 4px;
+}
+
+.rk-p-right-4 {
+  padding-right: 4px;
+}
+
+.rk-p-left-4 {
+  padding-left: 4px;
+}
+
+/* PADDING - 16 */
 .rk-p-16 {
   padding: 16px;
 }
@@ -297,6 +549,27 @@ p {
 
 .rk-p-left-16 {
   padding-left: 16px;
+}
+
+/* PADDING - 24 */
+.rk-p-24 {
+  padding: 24px;
+}
+
+.rk-p-top-24 {
+  padding-top: 24px;
+}
+
+.rk-p-bottom-24 {
+  padding-bottom: 24px;
+}
+
+.rk-p-right-24 {
+  padding-right: 24px;
+}
+
+.rk-p-left-24 {
+  padding-left: 24px;
 }
 
 /* TITLE */
