@@ -52,6 +52,16 @@ export class IndexComponent implements OnInit {
     //   var pagePreloader = document.querySelector('.rk-preloader');
     //   pagePreloader?.classList.add('rk-fade-out');
     // })
+    var toggleModal = document.querySelectorAll('.rk-toggle-modal');
+    for (var i = 0; i < toggleModal.length; i++) {
+      toggleModal[i].addEventListener('click', function () {
+        var overlay = document.querySelector('.rk-overlay');
+        var modalMensagem = document.querySelector('#rk-modal-mensagem');
+        overlay?.classList.toggle('rk-is-open');
+        modalMensagem?.classList.toggle('rk-is-open');
+        modalMensagem?.classList.toggle('rk-slide-top-in');
+      })
+    }
   }
 
   contactInfo() {
