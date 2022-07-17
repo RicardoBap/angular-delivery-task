@@ -7,11 +7,13 @@ import { PagesRoutingModule } from './pages.routing.module';
 
 // IMPORT DIRECTIVE
 import { PreLoadDirective } from './directives/pre-load.directive';
+import { BtnContactIconChangeDirective } from './directives/btn-contact-icon-change.directive';
 
 @NgModule({
   declarations: [
     IndexComponent,
-    PreLoadDirective
+    PreLoadDirective,
+    BtnContactIconChangeDirective
   ],
   imports: [
     CommonModule,

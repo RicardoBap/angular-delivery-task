@@ -99,7 +99,7 @@
     </div>
   </div>
 
-  <button [ngClass]="changeIconContact" class="rk-btn-contact" (click)="contactInfo()">
+  <button class="rk-btn-contact" btnContactIconChange (click)="contactInfo()">
   </button>
 
   <div class="rk-page-wrapper">
@@ -127,10 +127,53 @@
 
     </section>
 
-    <section class="rk-full-height">
+    <section class="rk-full-height" id="rk-index-portfolio">
       <div class="square"></div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-2">
+            <div class="rk-portfolio-navigator">
+              <div class="rk-navigator-counter">
+                <span class="rk-text-blue">01</span>
+              </div>
+              <nav class="rk-item-navigator">
+                <a class="rk-item-active" href="#"></a>
+                <a href="#"></a>
+                <a href="#"></a>
+                <a href="#"></a>
+                <a href="#"></a>
+              </nav>
+              <div class="rk-items-next-prev rk-no-radius-left">
+                <div class="rk-item-prev">
+                  <i class="bi bi-caret-left-fill"></i>
+                </div>
 
+                <div class="rk-items-counter">
+                  <span>01</span>/<span>05</span>
+                </div>
+
+                <div class="rk-item-next" id="avante">
+                  <i class="bi bi-caret-right-fill"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-10">
+            <div class="rk-slider-container rk-full-height" [style.width.px]="widthChild">
+              <ul class="rk-slider-list" [style.width.px]="sliderWidthList">
+                <li class="rk-slider-item red" [style.width.px]="widthChild"></li>
+                <li class="rk-slider-item yellow" [style.width.px]="widthChild"></li>
+                <li class="rk-slider-item blue" [style.width.px]="widthChild"></li>
+                <li class="rk-slider-item purple" [style.width.px]="widthChild"></li>
+                <li class="rk-slider-item green" [style.width.px]="widthChild"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
+
   </div>
 
 </div>
