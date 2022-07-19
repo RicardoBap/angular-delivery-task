@@ -66,7 +66,7 @@
   </div>
 
   <header class="rk-topbar">
-    <div class="rk-logo">
+    <div class="rk-logo" routerLink="/home">
       <img src="../../../assets/logo/logo.svg" alt="Ricardo Kumagae UI/UX Design">
     </div>
 
@@ -134,25 +134,48 @@
           <div class="col-sm-2">
             <div class="rk-portfolio-navigator">
               <div class="rk-navigator-counter">
-                <span class="rk-text-blue">01</span>
+                <span class="rk-text-blue">0{{ currentSlider }}</span>
               </div>
               <nav class="rk-item-navigator">
-                <a class="rk-item-active" href="#"></a>
-                <a href="#"></a>
-                <a href="#"></a>
-                <a href="#"></a>
-                <a href="#"></a>
+                <ng-container>
+                  <a class="rk-item-active" *ngIf="currentSlider === 1; else noActive" href="#"></a>
+                  <ng-template #noActive>
+                    <a href="#"></a>
+                  </ng-template>
+                </ng-container>
+
+                <a class="rk-item-active" *ngIf="currentSlider === 2; else noActive" href="#"></a>
+                <ng-template #noActive>
+                  <a href="#"></a>
+                </ng-template>
+
+                <a class="rk-item-active" *ngIf="currentSlider === 3; else noActive" href="#"></a>
+                <ng-template #noActive>
+                  <a href="#"></a>
+                </ng-template>
+
+                <a class="rk-item-active" *ngIf="currentSlider === 4; else noActive" href="#"></a>
+                <ng-template #noActive>
+                  <a href="#"></a>
+                </ng-template>
+
+                <a class="rk-item-active" *ngIf="currentSlider === 5; else noActive" href="#"></a>
+                <ng-template #noActive>
+                  <a href="#"></a>
+                </ng-template>
               </nav>
               <div class="rk-items-next-prev rk-no-radius-left">
-                <div class="rk-item-prev">
+                <div class="rk-item-prev" (click)="prevCounter()">
                   <i class="bi bi-caret-left-fill"></i>
                 </div>
 
                 <div class="rk-items-counter">
-                  <span>01</span>/<span>05</span>
+                  <span>{{ currentSlider }}</span>
+                  /
+                  <span>0{{ sliderTotalItems }}</span>
                 </div>
 
-                <div class="rk-item-next" id="avante">
+                <div class="rk-item-next" (click)="nextCounter()">
                   <i class="bi bi-caret-right-fill"></i>
                 </div>
               </div>

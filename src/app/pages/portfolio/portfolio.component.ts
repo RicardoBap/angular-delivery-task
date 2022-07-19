@@ -1,15 +1,15 @@
-import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import { Tween } from 'jquery';
+import { gsap, ScrollTrigger } from "gsap/all";
+gsap.registerPlugin(ScrollTrigger);
 
 @Component({
-  selector: 'app-index',
-  templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css']
+  selector: 'app-portfolio',
+  templateUrl: './portfolio.component.html',
+  styleUrls: ['./portfolio.component.css']
 })
-export class IndexComponent implements OnInit {
+export class PortfolioComponent implements OnInit, AfterViewInit {
 
   contact: boolean = false;
   fadePreLoad = {};
@@ -24,14 +24,15 @@ export class IndexComponent implements OnInit {
   openBoxContact = {};
   controlHiddenContact: number = 0
 
-  constructor(private element: ElementRef) { }
+  sliderTotalItems: any = 0;
+  currentSlider: number = 1;
+
+  constructor(private router: Router) { }
 
   widthChild: any;
   sliderWidthList: any
 
   ngOnInit(): void {
-    gsap.registerPlugin(ScrollTrigger);
-
     gsap.to('.btn-scroll-hidden', {
       opacity: 0,
       duration: 1,
@@ -57,43 +58,75 @@ export class IndexComponent implements OnInit {
     // SLIDER
     // declarando variaveis
     var sliderContainer = document.querySelector('.rk-slider-container');
-    var sliderList = document.querySelector('.rk-slider-list');
     var sliderItem = document.querySelectorAll('.rk-slider-item');
+
+    this.sliderTotalItems = sliderItem.length
 
     // CAPTURANDO LARGURA INDIVIDUAIS
     var containerWidth = sliderContainer?.parentElement?.offsetWidth
 
-    //PASSANDO AS LARGURAS DINAMICAS
+    //PASSANDO AS LARGURAS DINAMICAS PARA O TEMPLATE
     this.widthChild = containerWidth
-
-    // console.log('width', containerWidth)
-    // for (var p = 0; p < sliderItem.length; p++) {
-    //   // sliderItem[p].style.width = containerWidth + 'px';
-    //   // console.log('teste', sliderItem[p])
-    // }
     this.sliderWidthList = this.widthChild * sliderItem.length
     console.log('largura', this.sliderWidthList)
 
+    // VARIVEIS CAPTURADAS DO CLICK
     var prevItem = document.querySelector('.rk-item-prev');
     var nextItem = document.querySelector('.rk-item-next');
 
+    // VARIAVEIS DE CONTROLE DA ROLAGEM HORIZONTAL UM A UM
+    let width: any = containerWidth;
+    let lastItem = this.sliderWidthList - width
+    let slidePos = 0;
+
+    // HANDLERS
     nextItem?.addEventListener('click', function () {
-      let slidePos = 0;
-      let width: any = containerWidth;
-
-      slidePos = slidePos - width;
-
-      // tween.reverse();
-      console.log('somaTotal', slidePos)
-
-      // let tween = 
-      gsap.to('.rk-slider-list', {
-        rotation: 0,
-        x: slidePos,
-        duration: 1
-      });
+      nextSlideAnim();
     })
 
+    prevItem?.addEventListener('click', function () {
+      prevSlideAnim();
+    })
+
+    var nextSlideAnim = function () {
+      console.log('somaTotal', slidePos, 'lastItem', lastItem);
+      if ((-1 * (slidePos)) == lastItem) {
+        console.log('ultimo slider', lastItem)
+        return;
+      }
+      gsap.to('.rk-slider-list', {
+        rotation: 0,
+        x: slidePos = slidePos - width,
+        duration: 1.5,
+        ease: "expo.inOut"
+      });
+      gsap.to(".rk-item-active", {
+        width: '55px'
+      });
+    }
+
+    var prevSlideAnim = function () {
+      if (slidePos == 0) {
+        console.log('FIRST')
+        return;
+      }
+      gsap.to('.rk-slider-list', {
+        rotation: 0,
+        x: slidePos = slidePos + width,
+        duration: 1.5,
+        ease: "expo.inOut"
+      });
+      gsap.to(".rk-item-active", {
+        width: '55px'
+      });
+    }
+
+  }
+
+  ngAfterViewInit() {
+    gsap.to('.rk-item-active', {
+      width: '55px'
+    })
   }
 
   contactInfo() {
@@ -107,6 +140,23 @@ export class IndexComponent implements OnInit {
       };
     }
     this.controlHiddenContact = this.controlHiddenContact + 1;
+  }
+
+
+  nextCounter() {
+    if (this.currentSlider >= this.sliderTotalItems) {
+      return;
+    } else {
+      this.currentSlider = this.currentSlider + 1;
+    }
+  }
+
+  prevCounter() {
+    if (this.currentSlider <= 1) {
+      return;
+    } else {
+      this.currentSlider = this.currentSlider - 1;
+    }
   }
 
 } 

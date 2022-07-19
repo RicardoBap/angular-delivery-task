@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 // IMPORT COMPONENTS
-import { IndexComponent } from './index/index.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
 
 const ROUTES: Routes = [
-  { path: '', component: IndexComponent }
+  { path: '', component: PortfolioComponent }
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(ROUTES)],
+  imports: [RouterModule.forChild(ROUTES)],
   exports: [RouterModule]
 })
 export class PagesRoutingModule { }
