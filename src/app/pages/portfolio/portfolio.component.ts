@@ -39,6 +39,12 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
       scrollTrigger: '.square'
     })
 
+    gsap.from('.rk-portfolio-item-thumb', {
+      x: 400,
+      duration: 2,
+      scrollTrigger: '.square'
+    })
+
     // window.addEventListener('load', function () {
     //   var pagePreloader = document.querySelector('.rk-preloader');
     //   pagePreloader?.classList.add('rk-fade-out');

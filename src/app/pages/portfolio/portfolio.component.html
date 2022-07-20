@@ -67,13 +67,13 @@
 
   <header class="rk-topbar">
     <div class="rk-logo" routerLink="/home">
-      <img src="../../../assets/logo/logo.svg" alt="Ricardo Kumagae UI/UX Design">
+      <img src="../../../assets/logo/logo.svg" alt="Ricardo Kumagae">
     </div>
 
     <nav class="rk-menu">
-      <a href="#">Home</a>
-      <a href="#">Projetos</a>
-      <a href="#">Sobre</a>
+      <a routerLink="/home">Home</a>
+      <!-- <a href="#">Projetos</a>
+      <a href="#">Sobre</a> -->
     </nav>
   </header>
 
@@ -109,7 +109,7 @@
         <div class="row">
           <div class="col-sm-12 col-md-2 offset-md-2"></div>
           <div class="col-sm-12 col-md-3 offset-md-2 rk-display-text">
-            <h1 class="rk-title rk-text-blue rk-title-big">Olá!</h1>
+            <h1 class="rk-title rk-text-blue rk-title-xlarge">Olá!</h1>
             <p class="rk-text-light rk-p-bottom-24">Meu nome é <span class="rk-text-blue">Ricardo Kumagae</span>, sou
               designer de <span class="rk-text-blue">UX e UI</span>.
             </p>
@@ -128,7 +128,6 @@
     </section>
 
     <section class="rk-full-height" id="rk-index-portfolio">
-      <div class="square"></div>
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-2">
@@ -137,12 +136,10 @@
                 <span class="rk-text-blue">0{{ currentSlider }}</span>
               </div>
               <nav class="rk-item-navigator">
-                <ng-container>
-                  <a class="rk-item-active" *ngIf="currentSlider === 1; else noActive" href="#"></a>
-                  <ng-template #noActive>
-                    <a href="#"></a>
-                  </ng-template>
-                </ng-container>
+                <a class="rk-item-active" *ngIf="currentSlider === 1; else noActive" href="#"></a>
+                <ng-template #noActive>
+                  <a href="#"></a>
+                </ng-template>
 
                 <a class="rk-item-active" *ngIf="currentSlider === 2; else noActive" href="#"></a>
                 <ng-template #noActive>
@@ -184,17 +181,113 @@
 
           <div class="col-sm-10">
             <div class="rk-slider-container rk-full-height" [style.width.px]="widthChild">
-              <ul class="rk-slider-list" [style.width.px]="sliderWidthList">
-                <li class="rk-slider-item red" [style.width.px]="widthChild"></li>
-                <li class="rk-slider-item yellow" [style.width.px]="widthChild"></li>
-                <li class="rk-slider-item blue" [style.width.px]="widthChild"></li>
-                <li class="rk-slider-item purple" [style.width.px]="widthChild"></li>
-                <li class="rk-slider-item green" [style.width.px]="widthChild"></li>
+              <ul class="rk-slider-list rk-full-height" [style.width.px]="sliderWidthList">
+
+                <li class="rk-slider-item" [style.width.px]="widthChild">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="rk-portfolio-item-info rk-text-light">
+                        <h1 class="rk-title rk-title-medium rk-m-bottom-16">Mockups para ilustração</h1>
+                        <p class="rk-m-bottom-16">Mockups para ilustrar melhor as suas páginas.</p>
+                        <button class="rk-btn rk-btn-large rk-btn-blue">ver projeto</button>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-1"></div>
+
+                    <div class="col-sm-6">
+                      <div class="rk-portfolio-item-thumb rk-text-light">
+                        <img class="teste" src="../../../assets/img/page-1.svg" alt="page-1">
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="rk-slider-item" [style.width.px]="widthChild">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="rk-portfolio-item-info rk-text-light">
+                        <h1 class="rk-title rk-title-medium rk-m-bottom-16">Startup Rockets Website</h1>
+                        <p class="rk-m-bottom-16">UX, UI e WordPress para aceleradora de startups.</p>
+                        <button class="rk-btn rk-btn-large rk-btn-blue">ver projeto</button>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-1"></div>
+
+                    <div class="col-sm-6">
+                      <div class="rk-portfolio-item-thumb rk-text-light">
+                        <img class="teste" src="../../../assets/img/page-1.svg" alt="page-1">
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="rk-slider-item" [style.width.px]="widthChild">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="rk-portfolio-item-info rk-text-light">
+                        <h1 class="rk-title rk-title-medium rk-m-bottom-16">Startup Rockets Website</h1>
+                        <p class="rk-m-bottom-16">UX, UI e WordPress para aceleradora de startups.</p>
+                        <button class="rk-btn rk-btn-large rk-btn-blue">ver projeto</button>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-1"></div>
+
+                    <div class="col-sm-6">
+                      <div class="rk-portfolio-item-thumb rk-text-light">
+                        <img class="teste" src="../../../assets/img/page-1.svg" alt="page-1">
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="rk-slider-item" [style.width.px]="widthChild">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="rk-portfolio-item-info rk-text-light">
+                        <h1 class="rk-title rk-title-medium rk-m-bottom-16">Startup Rockets Website</h1>
+                        <p class="rk-m-bottom-16">UX, UI e WordPress para aceleradora de startups.</p>
+                        <button class="rk-btn rk-btn-large rk-btn-blue">ver projeto</button>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-1"></div>
+
+                    <div class="col-sm-6">
+                      <div class="rk-portfolio-item-thumb rk-text-light">
+                        <img class="teste" src="../../../assets/img/page-1.svg" alt="page-1">
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="rk-slider-item" [style.width.px]="widthChild">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="rk-portfolio-item-info rk-text-light">
+                        <h1 class="rk-title rk-title-medium rk-m-bottom-16">Startup Rockets Website</h1>
+                        <p class="rk-m-bottom-16">UX, UI e WordPress para aceleradora de startups.</p>
+                        <button class="rk-btn rk-btn-large rk-btn-blue">ver projeto</button>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-1"></div>
+
+                    <div class="col-sm-6">
+                      <div class="rk-portfolio-item-thumb rk-text-light">
+                        <img class="teste" src="../../../assets/img/page-1.svg" alt="page-1">
+                      </div>
+                    </div>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
         </div>
       </div>
+      <div class="square"></div>
     </section>
 
   </div>
