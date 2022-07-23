@@ -50,6 +50,20 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
     //   pagePreloader?.classList.add('rk-fade-out');
     // })
 
+
+
+    // ABRINDO E FECHANDO O MENU
+    // var toggleMenu = document.querySelectorAll('.rk-toggle-menu');
+    // var menuMobile = document.querySelector('.rk-menu-mobile');
+    // for (var m = 0; m < toggleMenu.length; m++) {
+    //   toggleMenu[m].addEventListener('click', function () {
+    //     var overlay = document.querySelector('.rk-menu-overlay');
+    //     overlay?.classList.toggle('rk-is-open');
+    //     menuMobile?.classList.toggle('rk-menu-is-closed');
+    //     menuMobile?.classList.toggle('rk-menu-is-open');
+    //   })
+    // }
+
     var toggleModal = document.querySelectorAll('.rk-toggle-modal');
     for (var i = 0; i < toggleModal.length; i++) {
       toggleModal[i].addEventListener('click', function () {
@@ -148,7 +162,6 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
     this.controlHiddenContact = this.controlHiddenContact + 1;
   }
 
-
   nextCounter() {
     if (this.currentSlider >= this.sliderTotalItems) {
       return;
@@ -162,6 +175,16 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
       return;
     } else {
       this.currentSlider = this.currentSlider - 1;
+    }
+  }
+
+  open: boolean = false;
+
+  menu() {
+    if (this.open) {
+      this.open = false
+    } else {
+      this.open = true;
     }
   }
 
