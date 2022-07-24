@@ -344,7 +344,7 @@ label {
 
   /* HOME */
   .rk-display-text {
-    margin-top: 150px;
+    margin-top: 80px;
   }
 
   .rk-home-presentation {
@@ -366,6 +366,7 @@ label {
   .rk-home-presentation .rk-btn {
     margin-left: auto;
     margin-right: auto;
+    margin-top: 200px;
   }
 
   /* SCROL DOWN */
@@ -415,14 +416,14 @@ label {
 
   /* PORTFOLIO NAVIGATOR (MENU LATERAL) */
   .rk-portfolio-navigator {
-    width: 260px;
+    width: 200px;
     height: auto;
     /* 400 ^ */
     display: table;
     position: absolute;
     left: 0;
     top: 90vh;
-    /* z-index: 1300; */
+    z-index: 1300;
   }
 
   .rk-navigator-counter {
@@ -538,7 +539,8 @@ label {
   .rk-portfolio-item-info {
     width: 100%;
     display: table;
-    margin-top: 95px;
+    margin-top: 20px;
+    /* <<<--------------- */
   }
 
   .rk-portfolio-item-thumb {
@@ -584,7 +586,7 @@ label {
 
   /* UTILITARIAS */
   .rk-title-xlarge {
-    font-size: 90px;
+    font-size: 60px;
   }
 
   .rk-title-medium {
@@ -595,7 +597,8 @@ label {
   .rk-full-height {
     height: auto;
     position: relative;
-    padding-bottom: 145px;
+    padding-bottom: 80px;
+    /* <-------------- */
   }
 
 }
@@ -611,9 +614,21 @@ label {
     text-align: center;
   }
 
+  .rk-display-text {
+    margin-top: 100px;
+  }
+
+  .rk-portfolio-item-info {
+    width: 100%;
+    display: table;
+    margin-top: 80px;
+    /* <<<--------------- */
+  }
+
   .rk-home-presentation .rk-btn {
     margin-left: auto;
     margin-right: auto;
+    margin-top: 0px;
   }
 
   .rk-home-presentation p {
@@ -622,6 +637,12 @@ label {
 
   .label-scroll {
     left: 46%;
+  }
+
+  .rk-portfolio-item-thumb img {
+    width: 80%;
+    max-width: 80%;
+    left: 10%;
   }
 
 }
@@ -647,13 +668,17 @@ label {
     margin-top: calc(25vh - 75px);
   }
 
+  .rk-display-text {
+    margin-top: 100px;
+  }
+
   .rk-title-xlarge {
     font-size: 80px;
     text-align: left;
   }
 
   .rk-home-presentation .rk-btn {
-    margin-left: 0;
+    margin-left: 0px;
   }
 
   .rk-home-presentation p {
@@ -725,6 +750,10 @@ label {
     font-size: 40px;
   }
 
+  .rk-display-text {
+    margin-top: 160px;
+  }
+
   .rk-navigator-counter {
 
     margin-bottom: 20px;
@@ -783,6 +812,7 @@ label {
   .rk-home-presentation .rk-btn {
     margin-left: auto;
     margin-left: auto;
+    /* margin-top: 0px; */
   }
 
   .rk-menu-mobile,
@@ -887,10 +917,11 @@ label {
     font-size: 120px;
   }
 
-  .rk-home-presentation .rk-btn {
+  /* .rk-home-presentation .rk-btn {
     margin-left: auto;
     margin-right: auto;
-  }
+    margin-top: 0px;
+  } */
 
   .label-scroll {
     left: 48%;
