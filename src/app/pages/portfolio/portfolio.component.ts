@@ -50,8 +50,6 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
     //   pagePreloader?.classList.add('rk-fade-out');
     // })
 
-
-
     // ABRINDO E FECHANDO O MENU
     // var toggleMenu = document.querySelectorAll('.rk-toggle-menu');
     // var menuMobile = document.querySelector('.rk-menu-mobile');
@@ -109,9 +107,7 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
     })
 
     var nextSlideAnim = function () {
-      console.log('somaTotal', slidePos, 'lastItem', lastItem);
       if ((-1 * (slidePos)) == lastItem) {
-        console.log('ultimo slider', lastItem)
         return;
       }
       gsap.to('.rk-slider-list', {
@@ -127,7 +123,6 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
 
     var prevSlideAnim = function () {
       if (slidePos == 0) {
-        console.log('FIRST')
         return;
       }
       gsap.to('.rk-slider-list', {
