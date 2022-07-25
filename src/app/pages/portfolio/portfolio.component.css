@@ -422,7 +422,7 @@ label {
     display: table;
     position: absolute;
     left: 0;
-    top: 90vh;
+    top: 92vh;
     z-index: 1300;
   }
 
@@ -547,7 +547,7 @@ label {
     width: 100%;
     /* background-color: #2b2828; */
     display: table;
-    padding: 40px 0px;
+    padding: 130px 0px 0pc 0px;
     margin-top: 0px;
 
     position: relative;
@@ -595,9 +595,9 @@ label {
   }
 
   .rk-full-height {
-    height: auto;
+    height: 100vh;
     position: relative;
-    padding-bottom: 80px;
+    /* padding-bottom: 110px; */
     /* <-------------- */
   }
 
@@ -619,8 +619,6 @@ label {
   }
 
   .rk-portfolio-item-info {
-    width: 100%;
-    display: table;
     margin-top: 80px;
     /* <<<--------------- */
   }
@@ -639,11 +637,15 @@ label {
     left: 46%;
   }
 
-  .rk-portfolio-item-thumb img {
-    width: 80%;
-    max-width: 80%;
-    left: 10%;
-  }
+  /* .rk-portfolio-item-thumb img {
+    padding: 130px 0px 0px 0px;
+  } */
+
+  /* .rk-portfolio-item-thumb img {
+    width: 70%;
+    max-width: 70%;
+    left: 15%;
+  } */
 
 }
 
