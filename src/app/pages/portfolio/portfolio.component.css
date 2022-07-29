@@ -282,15 +282,20 @@ label {
   }
 
   .rk-contact-info {
-    width: 252px;
-    height: 172px;
-    padding: 24px;
+    width: 220px;
+    height: 152px;
+    padding: 10px 24px 24px 24px;
     position: fixed;
     bottom: 122px;
-    right: 64px;
+    right: 48px;
     z-index: 200;
     display: none;
     cursor: pointer;
+  }
+
+  .rk-contato {
+    font-size: 24px;
+    margin-bottom: 8px;
   }
 
   .rk-contact-info-inner {
