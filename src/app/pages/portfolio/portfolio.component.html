@@ -25,37 +25,38 @@
 
       <div class="row rk-m-top-16">
         <div class="col-sm-12">
-          <form class="rk-form">
+          <form class="rk-form" id="myFormModal" [formGroup]="contactForm" (ngSubmit)="enviarMensagem()">
             <div class="row">
               <div class="col-sm-12 col-md-6 rk-p-left-4 rk-p-right-4 rk-m-bottom-8">
                 <label class="rk-text-light" for="nome">Nome</label>
-                <input class="rk-field" type="text" name="nome" id="rk-nome">
+                <input class="rk-field rk-field-error" type="text" id="rk-nome" formControlName="nome">
               </div>
 
               <div class="col-sm-12 col-md-6 rk-p-left-4 rk-p-right-4 rk-m-bottom-8">
                 <label class="rk-text-light" for="email">Email</label>
-                <input class="rk-field" type="email" name="email" id="rk-email">
+                <input class="rk-field" type="email" id="rk-email" formControlName="email">
               </div>
 
               <div class="col-sm-12 col-md-6 rk-p-left-4 rk-p-right-4 rk-m-bottom-8">
                 <label class="rk-text-light" for="telefone">Telefone</label>
-                <input class="rk-field" type="tel" name="telefone" id="rk-telefone">
+                <input class="rk-field" type="tel" id="rk-telefone" formControlName="telefone">
               </div>
 
               <div class="col-sm-12 col-md-6 rk-p-left-4 rk-p-right-4 rk-m-bottom-8">
                 <label class="rk-text-light" for="site">Site</label>
-                <input class="rk-field" type="text" name="site" id="rk-site">
+                <input class="rk-field" type="text" id="rk-site" formControlName="site">
               </div>
 
               <div class="col-sm-12 col-md-12 rk-p-left-4 rk-p-right-4 rk-m-top-8">
                 <label class="rk-text-light" for="mensagem">Deixe sua mensagem</label>
-                <textarea class="rk-textarea" name="mensagem" id="rk-mensagem" rows="3"></textarea>
+                <textarea class="rk-textarea" id="rk-mensagem" rows="3" formControlName="mensagem"></textarea>
               </div>
             </div>
 
             <div class="row justify-content-end rk-m-top-16">
               <div class="col-sm-12 col-md-6">
-                <button class="rk-btn rk-btn-large rk-btn-blue rk-btn-block">
+                <button class="rk-btn rk-btn-large rk-btn-blue rk-btn-block" type="submit">
+                  <!--(click)="enviarMensagem()-->
                   Enviar
                 </button>
               </div>
@@ -296,7 +297,7 @@
 
                 <li class="rk-slider-item" [style.width.px]="widthChild">
                   <div class="row">
-                    <div class="margin-order col-sm-12 col-md-4 order-2 order-sm-2">
+                    <div class="margin-order col-sm-12 col-md-4 order-2 order-sm-2 order-md-1">
                       <div class="rk-portfolio-item-info rk-text-light">
                         <h1 class="rk-title rk-title-medium rk-m-bottom-16">Startup Rockets Website</h1>
                         <p class="rk-m-bottom-16">UX, UI e WordPress para aceleradora de startups.</p>
@@ -306,7 +307,7 @@
 
                     <div class="col-sm-1 col-md-1 d-md-block"></div>
 
-                    <div class="col-sm-12 col-md-7 order-1 order-sm-1">
+                    <div class="col-sm-12 col-md-7 order-1 order-sm-1 order-md-2">
                       <div class="rk-portfolio-item-thumb rk-text-light">
                         <div class="rk-portfolio-item-box d-none d-sm-none d-md-block"></div>
                         <img src="../../../assets/img/slider-page.svg" alt="page-1">

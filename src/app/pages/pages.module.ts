@@ -1,6 +1,7 @@
 // ANGULAR IMPORTS
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // IMPORT ROUTING
 import { PagesRoutingModule } from './pages.routing.module';
@@ -20,6 +21,9 @@ import { BtnContactIconChangeDirective } from './directives/btn-contact-icon-cha
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+
     PagesRoutingModule
   ],
   exports: [],

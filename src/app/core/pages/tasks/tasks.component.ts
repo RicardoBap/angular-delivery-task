@@ -34,7 +34,7 @@ export class TasksComponent implements OnInit {
     this.newTask.title = this.newTask.title.trim()
 
     if (!this.newTask.title) {
-      this.toastService.warning('Preencha corretamente', 'Atarefa deve ter um título', {
+      this.toastService.warning('Preencha corretamente', 'A tarefa deve ter um título', {
         timeOut: 3000,
         positionClass: 'toast-top-center'
       })

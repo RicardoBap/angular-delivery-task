@@ -29,7 +29,7 @@ import { ToastNoAnimationModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     NavbarComponent,
-    TaskSearchComponent,
+    TaskSearchComponent
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,10 @@
 import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { Contact } from 'src/app/core/pages/contacts/shared/contacts.model';
+import { ContactsService } from './shared/contacts.service';
+import { ToastrService } from 'ngx-toastr';
 
 import { gsap, ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
@@ -27,7 +32,11 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
   sliderTotalItems: any = 0;
   currentSlider: number = 1;
 
-  constructor(private router: Router) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private contactsService: ContactsService,
+    private toastService: ToastrService) { }
 
   widthChild: any;
   sliderWidthList: any
@@ -86,7 +95,6 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
     //PASSANDO AS LARGURAS DINAMICAS PARA O TEMPLATE
     this.widthChild = containerWidth
     this.sliderWidthList = this.widthChild * sliderItem.length
-    console.log('largura', this.sliderWidthList)
 
     // VARIVEIS CAPTURADAS DO CLICK
     var prevItem = document.querySelector('.rk-item-prev');
@@ -180,6 +188,54 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
       this.open = false
     } else {
       this.open = true;
+    }
+  }
+
+  contactForm = this.formBuilder.group({
+    nome: ['', [Validators.required, Validators.maxLength(50)]],
+    email: ['', [Validators.required, Validators.maxLength(50)]],
+    telefone: ['', [Validators.required, Validators.maxLength(20)]],
+    site: [''],
+    mensagem: ['', [Validators.required, Validators.maxLength(250)]]
+  })
+
+  // contactForm: FormGroup = new FormGroup({
+  //   'nome': new FormControl('', [Validators.required, Validators.maxLength(50)]),
+  //   'email': new FormControl('', [Validators.required, Validators.maxLength(50)]),
+  //   'telefone': new FormControl('', [Validators.required, Validators.maxLength(20)]),
+  //   'site': new FormControl(''),
+  //   'mensagem': new FormControl('', [Validators.required, Validators.maxLength(250)])
+  // })
+
+  enviarMensagem() {
+    if (this.contactForm.status === 'INVALID') {
+      this.contactForm.get('nome')!.markAsTouched()
+      this.contactForm.get('email')!.markAsTouched()
+      this.contactForm.get('telefone')!.markAsTouched()
+      this.contactForm.get('site')!.markAsTouched()
+      this.contactForm.get('mensagem')!.markAsTouched()
+    } else {
+      let contact = new Contact(
+        this.contactForm.value.nome,
+        this.contactForm.value.email,
+        this.contactForm.value.telefone,
+        this.contactForm.value.site,
+        this.contactForm.value.mensagem
+      )
+      console.log(contact)
+      this.contactsService.create(contact)
+        .subscribe({
+          next: () => {
+            this.toastService.success('Logo entrarei em contato', 'Obrigado pela mensagem')
+          },
+          error: () => { alert("Ocorreu um erro no servidor, tente mais tarde") }
+        })
+      var overlay = document.querySelector('.rk-overlay');
+      var modalMensagem = document.querySelector('#rk-modal-mensagem');
+      overlay?.classList.toggle('rk-is-open');
+      modalMensagem?.classList.toggle('rk-is-open');
+
+      this.contactForm.reset();
     }
   }
 
